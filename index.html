@@ -6,19 +6,14 @@
     <title>건우♥예은 결혼합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        :root { 
-            --main-pink: #ffb6c1; 
-            --soft-pink: #fff0f3; 
-            --deep-pink: #ff8fa3; 
-            --text-dark: #333; 
-        }
-        
+        :root { --main-pink: #ffb6c1; --soft-pink: #fff0f3; --deep-pink: #ff8fa3; --text-dark: #333; }
         .fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%); }
         body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: #fff; }
         .container { max-width: 480px; margin: 0 auto; position: relative; box-shadow: 0 0 30px rgba(255, 182, 193, 0.2); }
         
-        /* 헤더 */
+        /* 1. 헤더: 사진 원본 선명하게 사수 */
         .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; background: transparent; }
         .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: -1; }
         .header-text-box { padding-bottom: 60px; text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.6); }
@@ -28,60 +23,70 @@
 
         .white-section { background: rgba(255, 255, 255, 0.96); }
         .section { padding: 80px 20px; text-align: center; }
-        .wedding-invitation-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.2rem; color: var(--deep-pink); font-style: italic; margin-bottom: 10px; }
+
+        /* 2. 초대장 본문: 여유로운 줄 바꿈 복구 */
         .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.8; color: #222; margin: 0 auto 50px; word-break: keep-all; text-align: center; max-width: 95%; font-weight: 400; }
-        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-pink); margin-bottom: 40px; font-weight: 700; line-height: 2; }
+        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-pink); margin-bottom: 40px; font-weight: 700; }
         .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; border-top: 1px solid #ffebee; padding-top: 40px; }
 
-        /* 달력 - 한국어 요일 적용 */
+        /* 3. 달력: 한국어 요일 & 빨간 하트 적용 */
         .calendar-section { background-color: var(--soft-pink); padding: 60px 20px; border-radius: 30px; margin: 0 15px; }
         .calendar-month { font-size: 2.5rem; color: var(--deep-pink); margin-bottom: 25px; font-family: 'Nanum Myeongjo', serif; font-weight: 700; }
         .calendar-container { max-width: 300px; margin: 0 auto; background: #fff; padding: 25px 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(255, 182, 193, 0.15); }
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 0; }
         .calendar-grid div { font-size: 0.9rem; height: 35px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .day-label { font-weight: 700; color: #ccabb0; margin-bottom: 10px; font-size: 0.85rem !important; }
-        .day-label.sun { color: #ff8fa3; }
+        .day-label { font-weight: 700; color: #ccabb0; font-size: 0.85rem !important; }
+        .sun { color: #ff8fa3; }
         .wedding-day { font-weight: 700; color: #ff0000 !important; }
-        .wedding-day::before { content: '❤️'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 0.9rem; }
+        .wedding-day::before { content: '❤️'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 0.9rem; z-index: 2; }
 
-        /* 버튼 및 갤러리 */
-        .btn-action { margin: 10px auto; padding: 14px 0; width: 85%; display: block; background: #fff; border: 1.5px solid var(--main-pink); border-radius: 50px; color: var(--deep-pink); font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; }
+        /* 4. 갤러리 그리드 및 슬라이더 */
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 15px; }
-        .gallery div { aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; }
+        .gallery div { aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; cursor: pointer; }
         .gallery img { width: 100%; height: 100%; object-fit: cover; }
+        .slider-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 3000; justify-content: center; align-items: center; }
+        .swiper { width: 100%; height: 80vh; }
+        .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .close-slider { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; z-index: 3001; cursor: pointer; }
 
+        /* 5. 약도 및 지도 버튼 */
         .map-img-container { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid #ffebee; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .map-img-container img { width: 100%; display: block; }
+        .btn-action { margin: 10px auto; padding: 14px 0; width: 85%; display: block; background: #fff; border: 1.5px solid var(--main-pink); border-radius: 50px; color: var(--deep-pink); font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; text-align: center; }
 
-        /* 모달 스타일 - 신랑/신부측 구분 확실히 복구 */
+        /* 6. 모달(팝업): 신랑/신부 구분 복구 */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 85%; max-width: 400px; border-radius: 25px; padding: 30px 20px; position: relative; }
         .modal-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-pink); margin-bottom: 20px; font-weight: 700; text-align: center; }
         .acc-group-title { font-size: 1rem; color: var(--deep-pink); font-weight: 700; margin: 20px 0 10px; text-align: left; padding-left: 10px; border-left: 3px solid var(--main-pink); }
         .account-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f2f2f2; }
-        .acc-info-text { font-size: 0.85rem; text-align: left; line-height: 1.4; color: #444; }
         .btn-copy { background: #fff1f5; border: 1px solid var(--main-pink); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; color: var(--deep-pink); cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="fixed-bg"></div>
 
+    <div id="slider-modal" class="slider-modal">
+        <span class="close-slider" onclick="closeSlider()">&times;</span>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./1.jpg"></div><div class="swiper-slide"><img src="./2.jpg"></div><div class="swiper-slide"><img src="./3.jpg"></div>
+                <div class="swiper-slide"><img src="./4.jpg"></div><div class="swiper-slide"><img src="./5.jpg"></div><div class="swiper-slide"><img src="./6.jpg"></div>
+                <div class="swiper-slide"><img src="./7.jpg"></div><div class="swiper-slide"><img src="./8.jpg"></div><div class="swiper-slide"><img src="./9.jpg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
     <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-title">혼주에게 연락하기</div>
-            <div class="contact-row" style="display:flex; justify-content:space-around; margin-bottom:15px; border-bottom:1px solid #f9f9f9; padding-bottom:10px;">
-                <span>부 이도행 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                <span>모 마선영 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
+            <div style="text-align:center; font-size: 0.95rem;">
+                <p>부 이도행 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a> 모 마선영 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></p>
+                <p>부 최동식 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a> 모 정설미 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></p>
+                <p>신랑 이건우 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a> 신부 최예은 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></p>
             </div>
-            <div class="contact-row" style="display:flex; justify-content:space-around; margin-bottom:15px; border-bottom:1px solid #f9f9f9; padding-bottom:10px;">
-                <span>부 최동식 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                <span>모 정설미 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-            </div>
-            <div class="contact-row" style="display:flex; justify-content:space-around; padding-bottom:10px;">
-                <span>신랑 이건우 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                <span>신부 최예은 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-            </div>
-            <button onclick="closeModal('contact-modal')" style="margin-top:20px; border:none; background:none; color:#bbb; cursor:pointer; width:100%;">닫기</button>
+            <button onclick="closeModal('contact-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:20px; cursor:pointer;">닫기</button>
         </div>
     </div>
 
@@ -89,14 +94,12 @@
         <div class="modal-content" onclick="event.stopPropagation()" style="max-height:80vh; overflow-y:auto;">
             <div class="modal-title">마음 전하실 곳</div>
             <div class="acc-group-title">신랑측</div>
-            <div class="account-row"><div class="acc-info-text">부 이도행<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">모 마선영<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">신랑 이건우<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><span>부 이도행 국민 123-456-78</span><button class="btn-copy" onclick="copyText('12345678')">복사</button></div>
+            <div class="account-row"><span>신랑 이건우 국민 987-654-32</span><button class="btn-copy" onclick="copyText('98765432')">복사</button></div>
             <div class="acc-group-title">신부측</div>
-            <div class="account-row"><div class="acc-info-text">부 최동식<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">모 정설미<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">신부 최예은<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <button onclick="closeModal('account-modal')" style="margin-top:20px; border:none; background:none; color:#bbb; cursor:pointer; width:100%;">닫기</button>
+            <div class="account-row"><span>부 최동식 국민 111-222-33</span><button class="btn-copy" onclick="copyText('11122233')">복사</button></div>
+            <div class="account-row"><span>신부 최예은 국민 444-555-66</span><button class="btn-copy" onclick="copyText('44455566')">복사</button></div>
+            <button onclick="closeModal('account-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:20px; cursor:pointer;">닫기</button>
         </div>
     </div>
 
@@ -116,12 +119,11 @@
                 <div class="wedding-invitation-title">Wedding Invitation</div>
                 <div class="bible-verse">“우리가 사랑함은 그가 먼저<br>우리를 사랑하셨음이라”</div>
                 <p class="invitation-text">
-                    태어나 처음 배운 기도가<br>
+                태어나 처음 배운 기도가<br>
                 삶의 문장이 된 두 사람이 만났습니다.<br><br>
                 오랜 시간 각자의 자리에서 다져온<br>
-                믿음의 뿌리는<br>
-                이미 오래전부터 맞닿아 있던<br>
-                든든한 인연의 가지가 되어<br>
+                믿음의 뿌리는 이미 오래전부터<br>
+                맞닿아 있던 든든한 인연의 가지가 되어<br>
                 비로소 하나의 꽃을 피웠습니다.<br><br>
                 이제 주님이 허락하신 평생의 길을<br>
                 나란히 걸으려 합니다.<br><br>
@@ -152,9 +154,9 @@
             <div class="section" data-aos="fade-up">
                 <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-pink); letter-spacing:3px; margin-bottom:30px;">GALLERY</h3>
                 <div class="gallery">
-                    <div><img src="./1.jpg"></div><div><img src="./2.jpg"></div><div><img src="./3.jpg"></div>
-                    <div><img src="./4.jpg"></div><div><img src="./5.jpg"></div><div><img src="./6.jpg"></div>
-                    <div><img src="./7.jpg"></div><div><img src="./8.jpg"></div><div><img src="./9.jpg"></div>
+                    <div onclick="openSlider(0)"><img src="./1.jpg"></div><div onclick="openSlider(1)"><img src="./2.jpg"></div><div onclick="openSlider(2)"><img src="./3.jpg"></div>
+                    <div onclick="openSlider(3)"><img src="./4.jpg"></div><div onclick="openSlider(4)"><img src="./5.jpg"></div><div onclick="openSlider(5)"><img src="./6.jpg"></div>
+                    <div onclick="openSlider(6)"><img src="./7.jpg"></div><div onclick="openSlider(7)"><img src="./8.jpg"></div><div onclick="openSlider(8)"><img src="./9.jpg"></div>
                 </div>
             </div>
 
@@ -164,8 +166,8 @@
                 <p style="font-size:0.9rem; color:#888; margin-bottom:25px;">서울특별시 종로구 김상옥로 30</p>
                 <div class="map-img-container"><img src="./map.jpg" alt="약도"></div>
                 <div style="display:flex; gap:15px; justify-content:center; margin-bottom:40px;">
-                    <a href="https://naver.me/FzSifb7D" target="_blank" style="text-decoration:none; color:#03cf5d; font-weight:700; background:#fff; padding:12px 25px; border-radius:30px; box-shadow:0 2px 10px rgba(0,0,0,0.05);">네이버 지도</a>
-                    <a href="https://place.map.kakao.com/9742385" target="_blank" style="text-decoration:none; color:#3c1e1e; font-weight:700; background:#fff; padding:12px 25px; border-radius:30px; box-shadow:0 2px 10px rgba(0,0,0,0.05);">카카오맵</a>
+                    <a href="https://naver.me/FzSifb7D" target="_blank" class="btn-action" style="width:auto; padding:12px 25px; border-radius:30px; margin:0;">네이버 지도</a>
+                    <a href="https://place.map.kakao.com/9742385" target="_blank" class="btn-action" style="width:auto; padding:12px 25px; border-radius:30px; margin:0;">카카오맵</a>
                 </div>
                 <button class="btn-action" style="background:var(--deep-pink); color:#fff; border:none;" onclick="openModal('account-modal')">마음 전하실 곳</button>
             </div>
@@ -174,15 +176,17 @@
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         AOS.init();
+        const swiper = new Swiper(".mySwiper", { pagination: { el: ".swiper-pagination", clickable: true }, loop: true });
+        function openSlider(idx) { document.getElementById('slider-modal').style.display='flex'; swiper.slideToLoop(idx, 0); document.body.style.overflow='hidden'; }
+        function closeSlider() { document.getElementById('slider-modal').style.display='none'; document.body.style.overflow='auto'; }
         function openModal(id) { document.getElementById(id).style.display='flex'; document.body.style.overflow='hidden'; }
         function closeModal(id) { document.getElementById(id).style.display='none'; document.body.style.overflow='auto'; }
-        function copyText(text) {
-            const tempElem = document.createElement('textarea');
-            tempElem.value = text; document.body.appendChild(tempElem);
-            tempElem.select(); document.execCommand('copy');
-            document.body.removeChild(tempElem); alert("계좌번호가 복사되었습니다.");
+        function copyText(txt) {
+            const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select();
+            document.execCommand('copy'); document.body.removeChild(t); alert("계좌번호가 복사되었습니다.");
         }
     </script>
 </body>
