@@ -8,11 +8,31 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root { --main-pink: #fce4ec; --text-dark: #333; --acc-brown: #a67c73; }
-        body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%); background-attachment: fixed; }
+        
+        /* 모바일 배경 고정 버그 해결을 위한 새로운 배경 방식 */
+        .fixed-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%);
+        }
+
+        body { 
+            font-family: 'Nanum Gothic', sans-serif; 
+            margin: 0; 
+            color: var(--text-dark); 
+            overflow-x: hidden; 
+            line-height: 1.8;
+            background: #fff; /* 기본 배경색 */
+        }
+
+        /* 꽃잎 레이어 */
         .effect-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
         .petal { position: absolute; background: rgba(255, 182, 193, 0.6); border-radius: 150% 0 150% 0; animation: rain linear infinite; }
         @keyframes rain { 0% { transform: translate(0, -100px) rotate(0deg); opacity: 1; } 100% { transform: translate(150px, 100vh) rotate(360deg); opacity: 0; } }
-        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); box-shadow: 0 0 40px rgba(0,0,0,0.05); position: relative; }
+
+        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); box-shadow: 0 0 40px rgba(0,0,0,0.05); position: relative; }
         
         /* 헤더 전면 */
         .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; }
@@ -29,22 +49,17 @@
         .family-info { margin-top: 40px; font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; }
         .family-info b { color: #000; font-weight: 700; }
         
-        /* 버튼 스타일 */
-        .btn-action { margin-top: 15px; padding: 12px 25px; background: white; border: 1px solid #fce4ec; border-radius: 30px; color: #a67c73; font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .btn-action { padding: 12px 25px; background: white; border: 1px solid #fce4ec; border-radius: 30px; color: #a67c73; font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         
-        /* 모달 공통 */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: white; width: 85%; max-width: 380px; border-radius: 20px; padding: 30px 20px; text-align: center; max-height: 80vh; overflow-y: auto; }
+        .modal-content { background: white; width: 85%; max-width: 380px; border-radius: 20px; padding: 30px 20px; text-align: center; max-height: 85vh; overflow-y: auto; }
         .contact-row, .account-row { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; padding: 10px; border-bottom: 1px solid #f9f9f9; }
         .tel-icon { text-decoration: none; font-size: 1.2rem; color: #a67c73; }
-        
-        /* 계좌 팝업용 상세 */
         .acc-group-title { font-size: 1rem; color: var(--acc-brown); font-weight: 700; margin: 20px 0 10px; text-align: left; padding-left: 10px; border-left: 3px solid var(--main-pink); }
         .acc-info-text { font-size: 0.85rem; text-align: left; color: #444; }
         .acc-info-text b { display: block; color: #222; margin-bottom: 2px; }
         .btn-copy { background: #f8f8f8; border: 1px solid #ddd; padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; cursor: pointer; color: #666; }
 
-        /* 갤러리/슬라이더 */
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .gallery div { aspect-ratio: 1/1; background: #eee; border-radius: 6px; overflow: hidden; cursor: pointer; }
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; }
@@ -59,6 +74,7 @@
     </style>
 </head>
 <body>
+    <div class="fixed-bg"></div>
     <div class="effect-layer" id="effect-container"></div>
 
     <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
@@ -74,17 +90,14 @@
     <div id="account-modal" class="modal" onclick="closeModal('account-modal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; margin-bottom:10px;">마음 전하실 곳</h3>
-            
             <div class="acc-group-title">신랑측</div>
             <div class="account-row"><div class="acc-info-text"><b>부 이도행</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
             <div class="account-row"><div class="acc-info-text"><b>모 마선영</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
             <div class="account-row"><div class="acc-info-text"><b>신랑 이건우</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-
             <div class="acc-group-title">신부측</div>
             <div class="account-row"><div class="acc-info-text"><b>부 최동식</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
             <div class="account-row"><div class="acc-info-text"><b>모 정설미</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
             <div class="account-row"><div class="acc-info-text"><b>신부 최예은</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-
             <button onclick="closeModal('account-modal')" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer;">닫기</button>
         </div>
     </div>
@@ -103,7 +116,7 @@
                 <h1>WEDDING DAY</h1>
                 <h2>이건우 ♥ 최예은</h2>
                 <p>2026. 10. 03. 토요일 오후 12:30</p>
-                <p>한국기독교연합회관웨딩홀 3층</p>
+                <p>한국기독교연합회관 3층</p>
             </div>
         </div>
 
@@ -120,8 +133,7 @@
                 함께 기쁨의 증인이 되어주세요.
             </p>
             <div class="family-info">이도행 · 마선영의 차남 <b>이건우</b><br>최동식 · 정설미의 장녀 <b>최예은</b></div>
-            <button class="btn-action" onclick="openModal('contact-modal')">혼주에게 연락하기</button>
-            <button class="btn-action" onclick="openModal('account-modal')" style="background: var(--main-pink); border-color: var(--main-pink); color: #888;">마음 전하실 곳</button>
+            <button class="btn-action" style="margin-top:30px;" onclick="openModal('contact-modal')">혼주에게 연락하기</button>
         </div>
 
         <div class="section" data-aos="fade-up">
@@ -152,7 +164,11 @@
             </div>
         </div>
 
-        <p style="text-align:center; padding-bottom:60px; color:#aaa; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
+        <div class="section" data-aos="fade-up" style="padding-top:20px;">
+            <button class="btn-action" onclick="openModal('account-modal')" style="background: var(--main-pink); border-color: var(--main-pink); color: #888; width: 80%;">마음 전하실 곳</button>
+        </div>
+
+        <p style="text-align:center; padding-bottom:60px; color:#aaa; font-size:0.85rem; font-weight:700; margin-top:20px;">Copyright 2026. Geonwoo & Yeeun</p>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -168,10 +184,8 @@
             p.style.animationDuration = (Math.random() * 5 + 7) + 's';
             container.appendChild(p);
         }
-
         function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
-
         function copyText(text) {
             const tempElem = document.createElement('textarea');
             tempElem.value = text;
@@ -181,7 +195,6 @@
             document.body.removeChild(tempElem);
             alert("계좌번호가 복사되었습니다.");
         }
-
         const images = ['./1.jpg', './2.jpg', './3.jpg', './4.jpg', './5.jpg', './6.jpg', './7.jpg', './8.jpg', './9.jpg'];
         let currentIndex = 0;
         function openLightbox(index) { currentIndex = index; updateImg(); document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
