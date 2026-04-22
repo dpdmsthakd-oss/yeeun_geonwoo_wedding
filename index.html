@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation: Geonwoo & Yeeun</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <title>Wedding Invitation: 건우♡예은 결혼합니다.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        :root { --main-color: #fce4ec; --text-color: #444; }
-        /* 글씨체 설정 */
-        body { font-family: 'Nanum Gothic', sans-serif; margin: 0; background: #fffafb; color: var(--text-color); overflow-x: hidden; line-height: 1.8; }
-        h1, h3, .bible-verse, .invitation-text { font-family: 'Nanum Myeongjo', serif; }
+        :root { --main-color: #fce4ec; --text-color: #222; } /* 글자색을 더 진하게 변경 */
+        
+        body { 
+            font-family: 'Nanum Gothic', sans-serif; 
+            margin: 0; 
+            background: #fffafb; 
+            color: var(--text-color); 
+            overflow-x: hidden; 
+            line-height: 1.8; 
+            -webkit-font-smoothing: antialiased; /* 글자 선명도 향상 */
+        }
+        
+        /* 제목과 본문 텍스트 강조 */
+        h1, h2, h3, .bible-verse, .invitation-text { font-family: 'Nanum Myeongjo', serif; font-weight: 700; }
 
         /* 비눗방울 배경 */
         .bubbles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
@@ -20,29 +30,34 @@
             100% { bottom: 100vh; transform: translateX(100px); opacity: 0; }
         }
 
-        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(5px); box-shadow: 0 0 30px rgba(0,0,0,0.05); }
+        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); box-shadow: 0 0 30px rgba(0,0,0,0.05); }
         
         /* 헤더/표지 */
         .header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(to bottom, rgba(252, 228, 236, 0.4), transparent); }
-        .header h1 { font-size: 1.3rem; letter-spacing: 6px; color: #b8928a; margin-bottom: 35px; }
+        .header h1 { font-size: 1.5rem; letter-spacing: 6px; color: #a67c73; margin-bottom: 35px; font-weight: 800; }
         .main-img { width: 80%; aspect-ratio: 3/4; background: #eee; border-radius: 180px 180px 10px 10px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
 
         .section { padding: 80px 30px; text-align: center; }
-        .section h3 { color: #b8928a; margin-bottom: 40px; font-size: 1.2rem; letter-spacing: 3px; }
+        .section h3 { color: #a67c73; margin-bottom: 40px; font-size: 1.4rem; letter-spacing: 3px; font-weight: 800; }
         
-        .bible-verse { font-size: 0.9rem; color: #888; margin-bottom: 30px; line-height: 2; }
-        .invitation-text { font-size: 1rem; line-height: 2.5; word-break: keep-all; }
+        /* 성경 구절 가시성 강화 */
+        .bible-verse { font-size: 1rem; color: #555; margin-bottom: 35px; line-height: 2.2; font-weight: 700; border-left: 3px solid var(--main-color); padding-left: 10px; display: inline-block; text-align: left; }
+        
+        /* 초대장 본문 가시성 강화 */
+        .invitation-text { font-size: 1.1rem; line-height: 2.8; word-break: keep-all; font-weight: 400; color: #333; }
 
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .gallery div { aspect-ratio: 1/1; background: #f5f5f5; border-radius: 4px; overflow: hidden; }
 
-        /* 지도 버튼 스타일 */
-        .map-btn { display: inline-block; padding: 10px 18px; border-radius: 5px; font-size: 0.85rem; font-weight: bold; text-decoration: none; transition: 0.3s; }
+        .map-btn { display: inline-block; padding: 12px 22px; border-radius: 5px; font-size: 0.95rem; font-weight: 800; text-decoration: none; transition: 0.3s; }
         .naver { background: #03cf5d; color: white; }
         .kakao { background: #fae100; color: #3c1e1e; }
 
-        .account-box { background: #fdfdfd; padding: 25px; border-radius: 15px; border: 1px solid #f0f0f0; margin-bottom: 20px; text-align: left; }
-        .btn-kakao { background: #fee500; border: none; padding: 8px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; float: right; color: #3c1e1e; }
+        /* 계좌 정보 박스 가시성 강화 */
+        .account-box { background: #fff; padding: 25px; border-radius: 15px; border: 2px solid #fce4ec; margin-bottom: 20px; text-align: left; }
+        .account-box b { font-size: 1.1rem; color: #222; }
+        .btn-kakao { background: #fee500; border: none; padding: 10px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; cursor: pointer; float: right; color: #3c1e1e; }
+        .account-number { margin: 12px 0 0; font-size: 1.05rem; color: #444; font-weight: 700; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -54,8 +69,8 @@
             <div class="main-img">
                 <img src="./main.jpg" alt="메인사진" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
-            <h2 style="margin-top:40px; font-weight:400; font-family:'Nanum Myeongjo';">이건우 & 최예은</h2>
-            <p style="letter-spacing:1px; font-size:0.9rem; color:#999;">2026. 10. 03. 토요일 오후 12:30</p>
+            <h2 style="margin-top:40px; font-weight:700; font-family:'Nanum Myeongjo'; font-size: 1.8rem;">이건우♡최예은</h2>
+            <p style="letter-spacing:1px; font-size:1.1rem; color:#666; font-weight: 700;">2026. 10. 03. 토요일 오후 12:30</p>
         </div>
 
         <div class="section" data-aos="fade-up">
@@ -64,7 +79,7 @@
             </div>
             <p class="invitation-text">
                 언제나 변치 않는 믿음으로 소망을 품고,<br>
-                서로를 향한 아낌없는 사랑을 약속합니다.<br><br>
+                <b>서로를 향한 아낌없는 사랑</b>을 약속합니다.<br><br>
                 하나님께서 예비하신 축복의 통로 안에서<br>
                 두 사람이 하나 되어 사랑의 가정을 일구어 가려 합니다.<br><br>
                 귀한 걸음 하시어 저희의 약속이 시작되는 순간을<br>
@@ -89,11 +104,11 @@
 
         <div class="section" data-aos="fade-up">
             <h3>LOCATION</h3>
-            <p style="font-weight: bold; margin-bottom: 5px;">한국기독교연합회관 3층</p>
-            <p style="font-size: 0.9rem; color: #888; margin-bottom: 25px;">서울특별시 종로구 김상옥로 30</p>
+            <p style="font-weight: 800; font-size: 1.2rem; margin-bottom: 8px; color: #222;">한국기독교연합회관 3층</p>
+            <p style="font-size: 1rem; color: #555; margin-bottom: 25px; font-weight: 700;">서울특별시 종로구 김상옥로 30</p>
             
             <a href="https://naver.me/FzSifb7D" target="_blank">
-                <div style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                <div style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border: 1px solid #eee;">
                     <img src="./map.jpg" alt="약도" style="width: 100%; display: block;">
                 </div>
             </a>
@@ -107,18 +122,18 @@
         <div class="section" data-aos="fade-up">
             <h3>ACCOUNT</h3>
             <div class="account-box">
-                <button class="btn-kakao">송금</button>
+                <button class="btn-kakao">카톡 송금</button>
                 <p style="margin:0;"><b>신랑측</b> 부 이건우</p>
-                <p style="margin:8px 0 0; font-size:0.9rem; color:#666;">신한 110-XXX-XXXXXX</p>
+                <p class="account-number">신한 110-XXX-XXXXXX</p>
             </div>
             <div class="account-box">
-                <button class="btn-kakao">송금</button>
+                <button class="btn-kakao">카톡 송금</button>
                 <p style="margin:0;"><b>신부측</b> 부 최예은</p>
-                <p style="margin:8px 0 0; font-size:0.9rem; color:#666;">국민 XXX-XXXX-XXXX</p>
+                <p class="account-number">국민 XXX-XXXX-XXXX</p>
             </div>
         </div>
 
-        <p style="padding-bottom: 50px; font-size: 0.8rem; color: #ccc;">Copyright 2026. Geonwoo & Yeeun</p>
+        <p style="padding-bottom: 50px; font-size: 0.9rem; color: #999; font-weight: 700;">Copyright 2026. Geonwoo & Yeeun</p>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
