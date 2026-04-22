@@ -6,16 +6,33 @@
     <title>예은 ♡ 건우 결혼합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #f8f1f1; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; font-family: 'Nanum Myeongjo', serif; }
-        .envelope-wrapper { position: relative; cursor: pointer; margin-top: 80px; margin-bottom: 50px; }
-        .envelope { position: relative; width: 320px; height: 220px; background-color: #d1bfa7; border-radius: 0 0 10px 10px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .envelope::before { content: ""; position: absolute; top: 0; z-index: 4; border-top: 120px solid #c2b09a; border-left: 160px solid transparent; border-right: 160px solid transparent; transform-origin: top; transition: transform 0.6s ease-in-out; }
-        .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
-        .letter { position: absolute; bottom: 10px; left: 10px; width: 300px; height: 200px; background-color: white; padding: 25px; box-sizing: border-box; transition: transform 0.6s ease-in-out, height 0.6s ease-in-out; z-index: 2; text-align: center; overflow: hidden; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
-        .envelope-wrapper.open .letter { transform: translateY(-100px); height: auto; min-height: 650px; padding-bottom: 40px; }
-        .main-img { width: 100%; border-radius: 5px; margin-bottom: 20px; }
+        body { background-color: #f8f1f1; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; font-family: 'Nanum Myeongjo', serif; overflow-x: hidden; }
         
-        /* 물방울 하트 애니메이션 */
+        /* [핵심 수정] 사진 영역: 화면 상단에 고정, 크고 시원하게! */
+        .main-photo-container {
+            width: 100%;
+            max-width: 600px; /* PC에서도 너무 안 커지게 제한 */
+            margin-top: 20px;
+            padding: 0 15px; /* 모바일 여백 */
+            box-sizing: border-box;
+        }
+        .main-img {
+            width: 100%;
+            height: auto; /* 비율 유지 */
+            border-radius: 10px; /* 부드러운 모서리 */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: block; /* 하단 공백 제거 */
+        }
+
+        /* 편지 영역: 사진 아래로 이동 */
+        .envelope-wrapper { position: relative; cursor: pointer; margin-top: 50px; margin-bottom: 80px; transition: 0.3s; }
+        .envelope { position: relative; width: 300px; height: 200px; background-color: #d1bfa7; border-radius: 0 0 10px 10px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .envelope::before { content: ""; position: absolute; top: 0; z-index: 4; border-top: 110px solid #c2b09a; border-left: 150px solid transparent; border-right: 150px solid transparent; transform-origin: top; transition: transform 0.6s ease-in-out; }
+        .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
+        .letter { position: absolute; bottom: 10px; left: 10px; width: 280px; height: 180px; background-color: white; padding: 25px 20px; box-sizing: border-box; transition: transform 0.6s ease-in-out, height 0.6s ease-in-out; z-index: 2; text-align: center; overflow: hidden; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
+        .envelope-wrapper.open .letter { transform: translateY(-80px); height: auto; min-height: 580px; }
+        
+        /* 💧 물방울 하트 애니메이션 (크기 유지) */
         .drop-seal { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 5; }
         .water-drop { width: 20px; height: 20px; background-color: #ffb7c5; border-radius: 0 50% 50% 50%; transform: rotate(45deg); animation: drip 2s infinite; }
         @keyframes drip {
@@ -27,39 +44,55 @@
         .water-drop::before { top: -50%; left: 0; }
         .water-drop::after { left: -50%; top: 0; }
 
-        /* 버튼 스타일 */
-        .map-btn { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #8d7d66; color: white; text-decoration: none; border-radius: 5px; font-size: 13px; }
+        /* 버튼 및 텍스트 스타일 */
+        .section-title { font-weight: bold; color: #8d7d66; margin-bottom: 10px; }
+        .section-content { font-size: 14px; color: #666; line-height: 1.8; margin-bottom: 25px; }
+        .map-btn { display: inline-block; padding: 10px 20px; background-color: #8d7d66; color: white; text-decoration: none; border-radius: 5px; font-size: 13px; margin-top: 10px; }
+        .account-box { background: #f9f9f9; padding: 10px; border-radius: 5px; font-size: 13px; text-align: left; line-height: 2; }
     </style>
 </head>
 <body>
+
+    <div class="main-photo-container">
+        <img src="main.jpg.jpg" alt="Wedding Photo" class="main-img">
+    </div>
+
     <div class="envelope-wrapper" onclick="this.classList.toggle('open')">
         <div class="drop-seal"><div class="water-drop"></div></div>
         <div class="envelope"></div>
         <div class="letter">
-            <img src="main.jpg.jpg" alt="Wedding Photo" class="main-img">
             <h2 style="color:#555; font-size: 20px;">이건우 ♡ 최예은</h2>
-            <p style="color:#777; line-height:1.8; font-size: 15px;">
+            <p style="color:#777; line-height:1.8; font-size: 15px; margin-bottom: 30px;">
                 서로가 마주 보며 다진 약속을<br>
                 믿음으로 지켜나가겠습니다.<br>
                 귀한 걸음으로 축복해 주세요.
             </p>
             
-            <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px; font-size:14px; color:#444; line-height: 2;">
-                <p><b>일시:</b> 2026년 10월 3일(토) 낮 12시 30분</p>
-                <p><b>장소:</b> 한국기독교연합회관 웨딩홀</p>
-                <p style="font-size: 12px; color: #888;">(서울 종로구 김상옥로 30)</p>
-                
-                <a href="https://m.map.naver.com/search2/search.naver?query=한국기독교연합회관웨딩홀" target="_blank" class="map-btn">네이버 지도 보기</a>
+            <div class="section">
+                <p class="section-title">일시</p>
+                <p class="section-content">2026년 10월 3일(토) 낮 12시 30분</p>
             </div>
 
-            <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px; font-size:13px;">
-                <p style="color: #8d7d66; font-weight: bold;">마음 전하실 곳</p>
-                <p>신부 최예은: 국민 123-456789-01</p>
-                <p>신랑 이건우: 신한 987-654321-02</p>
+            <div class="section">
+                <p class="section-title">장소</p>
+                <p class="section-content">
+                    한국기독교연합회관 웨딩홀<br>
+                    <span style="font-size: 12px; color: #999;">서울 종로구 김상옥로 30</span><br>
+                    <a href="https://naver.me/xD6U3w3t" target="_blank" class="map-btn">네이버 지도 보기</a>
+                </p>
+            </div>
+
+            <div class="section">
+                <p class="section-title">마음 전하실 곳</p>
+                <div class="account-box">
+                    신부 최예은: 국민 123-456789-01<br>
+                    신랑 이건우: 신한 987-654321-02
+                </div>
             </div>
             
-            <p style="font-size:11px; color:#bbb; margin-top:40px;">봉투를 터치하면 닫힙니다.</p>
+            <p style="font-size:11px; color:#bbb; margin-top:50px;">봉투를 다시 누르면 닫힙니다.</p>
         </div>
     </div>
+
 </body>
 </html>
