@@ -15,10 +15,8 @@
             color: var(--text-dark); 
             overflow-x: hidden; 
             line-height: 1.8;
-            /* 핑크 그라데이션 배경 */
             background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%);
             background-attachment: fixed;
-            -webkit-font-smoothing: antialiased; /* 글자 선명도 향상 */
         }
 
         /* 꽃잎 레이어 */
@@ -28,76 +26,92 @@
 
         .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); box-shadow: 0 0 40px rgba(0,0,0,0.05); position: relative; }
         
-        /* 헤더/표지: 메인 사진 전면 꽉 차게 변경 */
+        /* 헤더 전면 커버 스타일 */
         .header { 
-            height: 100vh; /* 화면 높이 전체 차지 */
+            height: 100vh; 
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-end; /* 텍스트를 아래쪽에 배치 */
-            color: white; /* 어두운 사진 위에서 글씨가 보이도록 흰색 설정 */
+            justify-content: flex-end; 
+            color: white; 
             text-align: center;
             overflow: hidden;
         }
-
-        /* 전면 배경 이미지 스타일 */
         .header-bg {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-image: url('./main.jpg'); /* 메인 사진 경로 */
+            background-image: url('./main.jpg');
             background-size: cover;
             background-position: center;
             z-index: -1;
-            /* 사진이 너무 밝을 경우 글씨가 안 보일 수 있으므로 어둡게 오버레이 추가 */
             filter: brightness(0.85); 
         }
-
-        /* 헤더 텍스트 스타일: 크기 줄임 */
         .header-text-box {
-            padding-bottom: 50px; /* 아래쪽 여백 */
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3); /* 글씨 가독성을 위한 그림자 */
+            padding-bottom: 50px; 
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3); 
         }
-        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.2rem; letter-spacing: 5px; color: #fff; font-weight: 700; margin-bottom: 20px; }
-        .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0 0 10px 0; }
-        .header p { font-size: 0.95rem; color: rgba(255,255,255,0.8); font-weight: 700; margin: 0; }
+        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.2rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 20px; }
+        .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.6rem; font-weight: 700; margin: 0 0 10px 0; }
+        .header p { font-size: 0.95rem; color: rgba(255,255,255,0.8); font-weight: 700; }
 
         .section { padding: 70px 25px; text-align: center; }
         .section h3 { font-family: 'Nanum Myeongjo', serif; color: var(--acc-brown); margin-bottom: 35px; font-size: 1.25rem; letter-spacing: 2px; font-weight: 700; }
         
-        /* 인사말: 글씨 크기 줄임 */
         .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; color: #555; margin-bottom: 30px; line-height: 2.1; font-weight: 700; }
         .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.6; word-break: keep-all; font-weight: 700; color: #222; }
 
-        /* 갤러리 디자인 유지 */
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .gallery div { aspect-ratio: 1/1; background: #eee; border-radius: 6px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
-        .gallery div:active { transform: scale(0.95); }
+        /* 가족 정보 및 연락처 버튼 스타일 */
+        .family-info { margin-top: 40px; font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; }
+        .family-info b { color: #000; font-weight: 700; }
+        .btn-contact { margin-top: 30px; padding: 12px 25px; background: white; border: 1px solid #fce4ec; border-radius: 30px; color: #a67c73; font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-        /* 확대 슬라이더 모달 유지 */
+        /* 연락처 모달 스타일 */
+        #contact-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: white; width: 85%; max-width: 380px; border-radius: 20px; padding: 30px 20px; text-align: center; }
+        .contact-row { display: flex; justify-content: space-around; align-items: center; margin: 15px 0; padding: 10px; border-bottom: 1px solid #f9f9f9; }
+        .contact-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
+        .tel-icon { text-decoration: none; font-size: 1.2rem; color: #a67c73; }
+
+        /* 갤러리/슬라이더 스타일 */
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .gallery div { aspect-ratio: 1/1; background: #eee; border-radius: 6px; overflow: hidden; cursor: pointer; }
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; }
-        #lightbox-img { max-width: 90%; max-height: 85%; box-shadow: 0 0 20px rgba(0,0,0,0.5); border-radius: 5px; }
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 40px; background: none; border: none; cursor: pointer; padding: 20px; user-select: none; z-index: 1001; }
-        .prev { left: 10px; }
-        .next { right: 10px; }
+        #lightbox-img { max-width: 90%; max-height: 85%; border-radius: 5px; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 40px; background: none; border: none; cursor: pointer; padding: 20px; z-index: 1001; }
+        .prev { left: 10px; } .next { right: 10px; }
         .close-btn { position: absolute; top: 15px; right: 20px; color: white; font-size: 35px; cursor: pointer; z-index: 1002; }
 
-        /* 지도 버튼: 크기 줄임 */
-        .map-btn { display: inline-block; padding: 10px 18px; border-radius: 6px; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: 0.3s; margin-top: 15px; }
+        /* 지도 및 계좌 스타일 */
+        .map-btn { display: inline-block; padding: 10px 18px; border-radius: 6px; font-size: 0.9rem; font-weight: 700; text-decoration: none; margin-top: 15px; }
         .naver { background: #03cf5d; color: white; }
         .kakao { background: #fae100; color: #3c1e1e; }
-        .location-p { font-size: 0.95rem; color: #555; margin-bottom: 20px; font-weight: 700; }
-
-        /* 계좌 정보: 크기 줄임 */
         .account-box { background: #fff; padding: 20px; border-radius: 15px; border: 2px solid #fce4ec; margin-bottom: 15px; text-align: left; }
-        .account-box b { font-size: 1.05rem; }
-        .btn-kakao { background: #fee500; border: none; padding: 8px 15px; border-radius: 15px; font-size: 0.8rem; font-weight: 700; cursor: pointer; float: right; color: #3c1e1e; }
-        .account-num { font-size: 1rem; font-weight: 700; color: #444; margin-top: 8px; display: block; }
+        .btn-kakao { background: #fee500; border: none; padding: 8px 15px; border-radius: 15px; font-size: 0.8rem; font-weight: 700; float: right; color: #3c1e1e; }
     </style>
 </head>
 <body>
     <div class="effect-layer" id="effect-container"></div>
+
+    <div id="contact-modal" onclick="closeContact()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; margin-bottom:20px;">혼주에게 연락하기</h3>
+            <div class="contact-row">
+                <div class="contact-item">부 이도행 <a href="tel:010-1111-1111" class="tel-icon">📞</a></div>
+                <div class="contact-item">모 마선영 <a href="tel:010-1111-1111" class="tel-icon">📞</a></div>
+            </div>
+            <div class="contact-row">
+                <div class="contact-item">부 최동식 <a href="tel:010-1111-1111" class="tel-icon">📞</a></div>
+                <div class="contact-item">모 정설미 <a href="tel:010-1111-1111" class="tel-icon">📞</a></div>
+            </div>
+            <div class="contact-row">
+                <div class="contact-item">신랑 이건우 <a href="tel:010-1111-1111" class="tel-icon">📞</a></div>
+                <div class="contact-item">신부 최예은 <a href="tel:010-1111-1111" class="tel-icon">📞</a></div>
+            </div>
+            <button onclick="closeContact()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer;">닫기</button>
+        </div>
+    </div>
 
     <div id="lightbox">
         <span class="close-btn" onclick="closeLightbox()">&times;</span>
@@ -108,7 +122,8 @@
 
     <div class="container">
         <div class="header">
-            <div class="header-bg"></div> <div class="header-text-box" data-aos="fade-up">
+            <div class="header-bg"></div>
+            <div class="header-text-box" data-aos="fade-up">
                 <h1>WEDDING DAY</h1>
                 <h2>이건우 ♥ 최예은</h2>
                 <p>2026. 10. 03. 토요일 오후 12:30</p>
@@ -117,7 +132,8 @@
 
         <div class="section" data-aos="fade-up">
             <div class="bible-verse">
-                "그런즉 믿음, 소망, 사랑, 이 세 가지는 항상 있을 것인데<br>그 중의 제일은 사랑이라"</p>
+                "그런즉 믿음, 소망, 사랑, 이 세 가지는 항상 있을 것인데<br>그 중의 제일은 사랑이라"
+            </div>
             <p class="invitation-text">
                 언제나 변치 않는 믿음으로 소망을 품고,<br>
                 <b>서로를 향한 아낌없는 사랑</b>을 약속합니다.<br><br>
@@ -126,6 +142,11 @@
                 귀한 걸음 하시어 저희의 약속이 시작되는 순간을<br>
                 함께 기뻐해 주시면 감사하겠습니다.
             </p>
+            <div class="family-info">
+                이도행 · 마선영의 차남 <b>이건우</b><br>
+                최동식 · 정설미의 장녀 <b>최예은</b>
+            </div>
+            <button class="btn-contact" onclick="openContact()">혼주에게 연락하기</button>
         </div>
 
         <div class="section" data-aos="fade-up">
@@ -146,14 +167,12 @@
         <div class="section" data-aos="fade-up">
             <h3>LOCATION</h3>
             <p style="font-weight: 700; font-size: 1.15rem; margin-bottom: 5px; color:#222;">한국기독교연합회관 3층</p>
-            <p class="location-p">서울특별시 종로구 김상옥로 30</p>
-            
+            <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px; font-weight: 700;">서울특별시 종로구 김상옥로 30</p>
             <a href="https://naver.me/FzSifb7D" target="_blank">
                 <div style="border-radius: 12px; overflow: hidden; border: 1px solid #eee; box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
                     <img src="./map.jpg" alt="약도" style="width: 100%; display: block;">
                 </div>
             </a>
-
             <div style="display: flex; gap: 8px; justify-content: center;">
                 <a href="https://naver.me/FzSifb7D" target="_blank" class="map-btn naver">네이버 지도</a>
                 <a href="https://place.map.kakao.com/9742385" target="_blank" class="map-btn kakao">카카오맵</a>
@@ -165,21 +184,22 @@
             <div class="account-box">
                 <button class="btn-kakao">카톡 송금</button>
                 <p style="margin:0;"><b>신랑측</b> 부 이건우</p>
-                <span class="account-num">신한 110-XXX-XXXXXX</span>
+                <span style="font-size: 1rem; font-weight: 700; color: #444; margin-top: 8px; display: block;">신한 110-XXX-XXXXXX</span>
             </div>
             <div class="account-box">
                 <button class="btn-kakao">카톡 송금</button>
                 <p style="margin:0;"><b>신부측</b> 부 최예은</p>
-                <span class="account-num">국민 XXX-XXXX-XXXX</span>
+                <span style="font-size: 1rem; font-weight: 700; color: #444; margin-top: 8px; display: block;">국민 XXX-XXXX-XXXX</span>
             </div>
         </div>
-
         <p style="text-align:center; padding-bottom:50px; color:#aaa; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
+        
+        // 꽃잎 효과
         const container = document.getElementById('effect-container');
         for (let i = 0; i < 20; i++) {
             const p = document.createElement('div');
@@ -191,40 +211,17 @@
             container.appendChild(p);
         }
 
-        // 슬라이드 기능 스크립트 유지
+        // 연락처 모달 함수
+        function openContact() { document.getElementById('contact-modal').style.display = 'flex'; }
+        function closeContact() { document.getElementById('contact-modal').style.display = 'none'; }
+
+        // 슬라이더 함수
         const images = ['./1.jpg', './2.jpg', './3.jpg', './4.jpg', './5.jpg', './6.jpg', './7.jpg', './8.jpg', './9.jpg'];
         let currentIndex = 0;
-
-        function openLightbox(index) {
-            currentIndex = index;
-            updateLightboxImg();
-            document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function updateLightboxImg() {
-            document.getElementById('lightbox-img').src = images[currentIndex];
-        }
-
-        function changeImg(dir) {
-            currentIndex += dir;
-            if (currentIndex >= images.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = images.length - 1;
-            updateLightboxImg();
-        }
-        
-        document.addEventListener('keydown', (e) => {
-            if (document.getElementById('lightbox').style.display === 'flex') {
-                if (e.key === 'ArrowLeft') changeImg(-1);
-                if (e.key === 'ArrowRight') changeImg(1);
-                if (e.key === 'Escape') closeLightbox();
-            }
-        });
+        function openLightbox(index) { currentIndex = index; updateImg(); document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function updateImg() { document.getElementById('lightbox-img').src = images[currentIndex]; }
+        function changeImg(dir) { currentIndex = (currentIndex + dir + images.length) % images.length; updateImg(); }
     </script>
 </body>
 </html>
