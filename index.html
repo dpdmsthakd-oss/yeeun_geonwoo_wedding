@@ -3,75 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>건우♥예은결혼합니다</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>건우♥예은 결혼합니다</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        :root { --main-pink: #fce4ec; --light-pink: #fff1f5; --text-color: #555; --acc-color: #b8928a; }
-        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; color: var(--text-color); overflow-x: hidden; background: linear-gradient(135deg, var(--light-pink) 0%, #ffffff 100%); }
+        :root { --main-pink: #fce4ec; --text-dark: #222; --acc-brown: #a67c73; }
         
-        /* 꽃잎 흩날리는 효과 */
-        .petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; pointer-events: none; }
+        body { 
+            font-family: 'Nanum Gothic', sans-serif; 
+            margin: 0; 
+            color: var(--text-dark); 
+            overflow-x: hidden; 
+            line-height: 1.8;
+            background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%);
+            background-attachment: fixed;
+        }
+
+        /* 꽃잎 레이어 */
+        .effect-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
         .petal { position: absolute; background: rgba(255, 182, 193, 0.6); border-radius: 150% 0 150% 0; animation: rain linear infinite; }
-        @keyframes rain {
-            0% { transform: translate(0, -100px) rotate(0deg); opacity: 1; }
-            100% { transform: translate(100px, 100vh) rotate(360deg); opacity: 0; }
+        
+        @keyframes rain { 
+            0% { transform: translate(0, -100px) rotate(0deg); opacity: 1; } 
+            100% { transform: translate(150px, 100vh) rotate(360deg); opacity: 0; } 
         }
 
-        /* 나비 날아다니는 효과 */
-        .butterflies { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-        .butterfly { position: absolute; width: 10px; height: 10px; background: rgba(255, 223, 186, 0.8); border-radius: 50%; animation: fly linear infinite; box-shadow: 2px 2px 0 rgba(255, 182, 193, 0.8), -2px -2px 0 rgba(255, 182, 193, 0.8); }
-        .butterfly::before, .butterfly::after { content: ''; position: absolute; width: 8px; height: 12px; background: inherit; border-radius: 50%; top: -5px; }
-        .butterfly::before { left: -6px; transform: rotate(-30deg); animation: flap-left 0.2s infinite alternate; }
-        .butterfly::after { right: -6px; transform: rotate(30deg); animation: flap-right 0.2s infinite alternate; }
+        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); box-shadow: 0 0 40px rgba(0,0,0,0.05); }
         
-        @keyframes fly {
-            0% { transform: translate(-100px, 100px) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translate(100vw, -100px) rotate(360deg); opacity: 0; }
-        }
-        @keyframes flap-left { 0% { transform: rotate(-30deg); } 100% { transform: rotate(-10deg); } }
-        @keyframes flap-right { 0% { transform: rotate(30deg); } 100% { transform: rotate(10deg); } }
-
-        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        
-        .header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(to bottom, rgba(252, 228, 236, 0.6), transparent); }
-        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.6rem; letter-spacing: 5px; color: var(--acc-color); margin-bottom: 30px; font-weight: 700; }
-        .main-img { width: 85%; aspect-ratio: 3/4; background: #eee; border-radius: 200px 200px 20px 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 5px solid #fff; }
+        .header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.5rem; letter-spacing: 6px; color: var(--acc-brown); font-weight: 800; margin-bottom: 30px; }
+        .main-img { width: 80%; aspect-ratio: 3/4; border-radius: 180px 180px 20px 20px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
 
         .section { padding: 90px 30px; text-align: center; }
-        .section h3 { font-family: 'Nanum Myeongjo', serif; color: var(--acc-color); margin-bottom: 40px; font-size: 1.3rem; font-weight: 700; letter-spacing: 2px; }
-        .section p { line-height: 2.2; font-size: 1.05rem; }
+        .section h3 { font-family: 'Nanum Myeongjo', serif; color: var(--acc-brown); margin-bottom: 40px; font-size: 1.4rem; letter-spacing: 3px; font-weight: 800; }
         
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .gallery div { aspect-ratio: 1/1; background: #f0f0f0; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; color: #666; margin-bottom: 35px; line-height: 2.2; font-weight: 700; }
+        .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; line-height: 2.8; word-break: keep-all; font-weight: 700; }
 
-        .account-box { background: #fff; padding: 25px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); margin-bottom: 25px; text-align: left; border: 1px solid var(--light-pink); }
-        .btn-kakao { background: #fee500; border: none; padding: 10px 15px; border-radius: 25px; font-size: 0.85rem; font-weight: bold; cursor: pointer; float: right; color: #3c1e1e; box-shadow: 0 3px 10px rgba(254, 229, 0, 0.3); }
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .gallery div { aspect-ratio: 1/1; background: #eee; border-radius: 6px; overflow: hidden; }
 
-        /* AOS 무빙 효과 커스텀 */
-        [data-aos] { transition-duration: 1200ms; }
+        .map-btn { display: inline-block; padding: 12px 20px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; text-decoration: none; transition: 0.3s; margin-top: 20px; }
+        .naver { background: #03cf5d; color: white; }
+        .kakao { background: #fae100; color: #3c1e1e; }
+
+        .account-box { background: #fff; padding: 25px; border-radius: 20px; border: 2px solid #fce4ec; margin-bottom: 20px; text-align: left; }
+        .btn-kakao { background: #fee500; border: none; padding: 10px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; cursor: pointer; float: right; color: #3c1e1e; }
+        .account-num { font-size: 1.05rem; font-weight: 700; color: #444; margin-top: 10px; display: block; }
     </style>
 </head>
 <body>
-    <div class="petals" id="petal-container"></div>
-    <div class="butterflies" id="butterfly-container"></div>
+    <div class="effect-layer" id="effect-container"></div>
 
     <div class="container">
         <div class="header" data-aos="fade-up">
-            <h1>SAVE THE DATE</h1>
+            <h1>WEDDING DAY</h1>
             <div class="main-img">
-                <img src="./main.jpg" alt="메인사진" style="width:100%; height:100%; object-fit:cover; display:block;">
+                <img src="./main.jpg" style="width:100%; height:100%; object-fit:cover;">
             </div>
-            <h2 style="margin-top:40px; font-weight:400; font-family:'Nanum Myeongjo', serif; font-size: 1.8rem; color: #444;">이건우 ♥ 최예은</h2>
-            <p style="letter-spacing:1px; font-size:1rem; color: #888; font-weight: 300;">2026. 10. 03. SAT PM 12:30<br>한국기독교연합회관</p>
+            <h2 style="margin-top:40px; font-weight:700; font-family:'Nanum Myeongjo', serif; font-size: 1.8rem; color: #444;">이건우 ♥ 최예은</h2>
+            <p style="font-size:1.1rem; color:#666; font-weight: 700;">2026. 10. 03. 토요일 오후 12:30</p>
         </div>
 
         <div class="section" data-aos="fade-up">
-            <h3>INVITATION</h3>
-            <p style="font-family:'Nanum Myeongjo', serif; color: #666; font-style: italic;">"사랑은 오래 참고 사랑은 온유하며..."</p>
-            <p style="margin-top:30px; font-weight: 300; color: #444;">함께 맞는 열 번째 가을,<br>저희 두 사람이 사랑과 신뢰로<br>하나가 되려 합니다.<br><br>귀한 걸음 하시어 저희의 시작을<br>축복해 주시면 감사하겠습니다.</p>
+            <div class="bible-verse">
+                "그런즉 믿음, 소망, 사랑, 이 세 가지는 항상 있을 것인데<br>그 중의 제일은 사랑이라"<br>(고린도전서 13:13)
+            </div>
+            <p class="invitation-text">
+                언제나 변치 않는 믿음으로 소망을 품고,<br>
+                <b>서로를 향한 아낌없는 사랑</b>을 약속합니다.<br><br>
+                하나님께서 예비하신 축복의 통로 안에서<br>
+                두 사람이 하나 되어 사랑의 가정을 일구어 가려 합니다.<br><br>
+                귀한 걸음 하시어 저희의 약속이 시작되는 순간을<br>
+                함께 기뻐해 주시면 감사하겠습니다.
+            </p>
         </div>
 
         <div class="section" data-aos="fade-up">
@@ -90,48 +95,51 @@
         </div>
 
         <div class="section" data-aos="fade-up">
+            <h3>LOCATION</h3>
+            <p style="font-weight: 800; font-size: 1.25rem; margin-bottom: 5px;">한국기독교연합회관 3층</p>
+            <p style="font-size: 1rem; color: #666; margin-bottom: 25px;">서울특별시 종로구 김상옥로 30</p>
+            
+            <a href="https://naver.me/FzSifb7D" target="_blank">
+                <div style="border-radius: 15px; overflow: hidden; border: 1px solid #eee; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+                    <img src="./map.jpg" alt="약도" style="width: 100%; display: block;">
+                </div>
+            </a>
+
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <a href="https://naver.me/FzSifb7D" target="_blank" class="map-btn naver">네이버 지도</a>
+                <a href="https://place.map.kakao.com/9742385" target="_blank" class="map-btn kakao">카카오맵</a>
+            </div>
+        </div>
+
+        <div class="section" data-aos="fade-up">
             <h3>ACCOUNT</h3>
             <div class="account-box">
                 <button class="btn-kakao">카톡 송금</button>
-                <p style="margin:0; font-size: 1.1rem; font-weight: 700; color: #333;"><b>신랑측</b> 부 이건우</p>
-                <p style="margin:10px 0 0; font-size:0.95rem; color: #666;">신한 110-XXX-XXXXXX</p>
+                <p style="margin:0;"><b>신랑측</b> 부 이건우</p>
+                <span class="account-num">신한 110-XXX-XXXXXX</span>
             </div>
             <div class="account-box">
                 <button class="btn-kakao">카톡 송금</button>
-                <p style="margin:0; font-size: 1.1rem; font-weight: 700; color: #333;"><b>신부측</b> 부 최예은</p>
-                <p style="margin:10px 0 0; font-size:0.95rem; color: #666;">국민 XXXX-XXXX-XXXX</p>
+                <p style="margin:0;"><b>신부측</b> 부 최예은</p>
+                <span class="account-num">국민 XXX-XXXX-XXXX</span>
             </div>
         </div>
-        
-        <p style="padding-bottom: 60px; text-align: center; color: #ccc; font-size: 0.9rem; font-weight: 300;">Copyright 2026. Geonwoo & Yeeun</p>
+
+        <p style="text-align:center; padding-bottom:60px; color:#aaa; font-size:0.9rem;">Copyright 2026. Geonwoo & Yeeun</p>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
-        
-        // 꽃잎 생성
-        const petalContainer = document.getElementById('petal-container');
+        const container = document.getElementById('effect-container');
         for (let i = 0; i < 25; i++) {
-            const petal = document.createElement('div');
-            petal.classList.add('petal');
-            petal.style.left = Math.random() * 100 + '%';
-            petal.style.width = petal.style.height = (Math.random() * 15 + 5) + 'px';
-            petal.style.animationDelay = Math.random() * 10 + 's';
-            petal.style.animationDuration = (Math.random() * 8 + 5) + 's';
-            petalContainer.appendChild(petal);
-        }
-
-        // 나비 생성
-        const butterflyContainer = document.getElementById('butterfly-container');
-        for (let i = 0; i < 8; i++) {
-            const butterfly = document.createElement('div');
-            butterfly.classList.add('butterfly');
-            butterfly.style.left = Math.random() * 100 + '%';
-            butterfly.style.top = Math.random() * 100 + '%';
-            butterfly.style.animationDelay = Math.random() * 15 + 's';
-            butterfly.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            butterflyContainer.appendChild(butterfly);
+            const p = document.createElement('div');
+            p.className = 'petal';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.width = p.style.height = (Math.random() * 12 + 10) + 'px';
+            p.style.animationDelay = Math.random() * 10 + 's';
+            p.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            container.appendChild(p);
         }
     </script>
 </body>
