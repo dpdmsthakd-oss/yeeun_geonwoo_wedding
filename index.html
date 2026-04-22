@@ -7,87 +7,128 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        :root { --main-purple: #9a89ff; --main-pink: #fce4ec; --text-dark: #444; --acc-brown: #a67c73; }
+        /* 🎀 공주님을 위한 핑크 메인 테마 설정 */
+        :root { 
+            --main-pink: #ffb6c1; 
+            --soft-pink: #fff0f3; 
+            --deep-pink: #ff8fa3; 
+            --text-dark: #333; 
+        }
         
-        /* 배경 고정 버그 해결 */
+        /* 모바일 배경 고정 버그 해결 */
         .fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%); }
-        body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: #fff; }
-
-        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.9); position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
         
-        /* 헤더 */
-        .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; }
-        .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: -1; filter: brightness(0.8); }
-        .header-text-box { padding-bottom: 60px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 15px; }
-        .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.6rem; font-weight: 700; margin: 0 0 12px 0; }
+        body { 
+            font-family: 'Nanum Gothic', sans-serif; 
+            margin: 0; 
+            color: var(--text-dark); 
+            overflow-x: hidden; 
+            line-height: 1.8;
+            background: #fff;
+        }
 
-        /* 섹션 공통 여백 */
+        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.96); position: relative; box-shadow: 0 0 30px rgba(255, 182, 193, 0.2); }
+        
+        /* 헤더: 전면 사진 원본 유지 및 그림자 강화 */
+        .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; }
+        .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: -1; }
+        .header-text-box { padding-bottom: 60px; text-shadow: 0 2px 15px rgba(0,0,0,0.8), 0 0 5px rgba(0,0,0,0.5); }
+        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 15px; }
+        .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.7rem; font-weight: 700; margin: 0 0 12px 0; }
+        .header p { font-size: 0.9rem; font-weight: 700; margin: 4px 0; }
+
         .section { padding: 80px 20px; text-align: center; }
         
-        /* 초대장 문구 배율 핵심 수정 */
-        .wedding-invitation-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--main-purple); font-style: italic; margin-bottom: 10px; letter-spacing: 1px; }
-        .invitation-subtitle { font-size: 0.95rem; color: #666; margin-bottom: 40px; font-weight: 700; letter-spacing: -0.5px; }
+        /* 초대장 문구 배율 및 정렬 최적화 */
+        .wedding-invitation-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.2rem; color: var(--deep-pink); font-style: italic; margin-bottom: 10px; }
+        .invitation-subtitle { font-size: 1rem; color: #888; margin-bottom: 40px; font-weight: 700; }
         
         .invitation-text { 
             font-family: 'Nanum Myeongjo', serif; 
-            font-size: 0.92rem;        /* 1. 글씨 크기를 최적화해서 한 줄에 잘 담기게 */
-            line-height: 2.6;          /* 2. 줄 간격을 여유 있게 */
-            color: #333; 
-            margin: 0 auto 50px; 
-            word-break: keep-all;      /* 3. 단어가 잘리지 않게 */
-            font-weight: 400; 
-            padding: 0 10px;           /* 4. 양옆 여백으로 텍스트 가두기 */
-            max-width: 95%;
-        }
-
-        .bible-verse { 
-            font-family: 'Nanum Myeongjo', serif; 
             font-size: 0.95rem; 
-            color: #555; 
-            margin-bottom: 35px; 
-            font-weight: 700;
-            line-height: 2;
+            line-height: 2.8; 
+            color: #222; 
+            margin: 0 auto 50px; 
+            word-break: keep-all; 
+            font-weight: 400; 
+            padding: 0 15px; 
+            text-align: center;
+            max-width: 90%;
         }
 
-        /* 가족 정보 */
-        .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.2; color: #444; margin-bottom: 30px; }
-        .family-info b { color: #222; font-weight: 700; }
+        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-pink); margin-bottom: 40px; font-weight: 700; line-height: 2; }
 
-        /* 달력 디자인 */
-        .calendar-section { background-color: #f9f7ff; padding: 60px 20px; }
-        .calendar-title { font-size: 0.85rem; color: var(--main-purple); letter-spacing: 2px; margin-bottom: 5px; font-weight: 700; }
-        .calendar-date-info { font-size: 0.95rem; color: #888; margin-bottom: 25px; }
-        .calendar-month { font-size: 2rem; color: var(--main-purple); margin-bottom: 25px; font-family: 'Nanum Myeongjo', serif; }
+        .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; border-top: 1px solid #ffebee; padding-top: 40px; }
+        .family-info b { color: #000; font-weight: 700; }
+
+        /* 🎀 달력 섹션: 핑크 테마 디자인 */
+        .calendar-section { background-color: var(--soft-pink); padding: 60px 20px; border-radius: 30px; margin: 0 15px; }
+        .calendar-title { font-size: 0.85rem; color: var(--deep-pink); letter-spacing: 3px; margin-bottom: 8px; font-weight: 700; }
+        .calendar-month { font-size: 2.5rem; color: var(--deep-pink); margin-bottom: 25px; font-family: 'Nanum Myeongjo', serif; font-weight: 700; }
         
-        .calendar-container { max-width: 280px; margin: 0 auto; }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px 0; }
-        .calendar-grid div { font-size: 0.85rem; height: 32px; display: flex; align-items: center; justify-content: center; }
-        .day-label { font-weight: 700; color: #444; margin-bottom: 10px; }
-        .day-label.sun { color: #e57373; }
+        .calendar-container { max-width: 300px; margin: 0 auto; background: #fff; padding: 25px 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(255, 182, 193, 0.15); }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 0; }
+        .calendar-grid div { font-size: 0.9rem; height: 35px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .day-label { font-weight: 700; color: #ccabb0; margin-bottom: 10px; font-size: 0.8rem !important; }
+        .day-label.sun { color: #ff8fa3; }
         
-        /* 결혼식 날 포인트 */
-        .wedding-day { position: relative; color: white !important; font-weight: 700; }
-        .wedding-day::after { 
-            content: '♥'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            color: var(--main-purple); font-size: 1.5rem; z-index: -1; opacity: 0.7;
+        /* ❤️ 10월 3일 빨간 하트 확실하게 소환! */
+        .wedding-day { font-weight: 700; color: #ff0000 !important; }
+        .wedding-day::before { 
+            content: '❤️'; 
+            position: absolute; 
+            top: -15px; 
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            z-index: 2;
         }
 
-        /* 버튼 */
-        .btn-action { margin: 10px auto; padding: 12px 0; width: 85%; display: block; background: #fff; border: 1px solid #eee; border-radius: 30px; color: #666; font-size: 0.9rem; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        /* 버튼: 핑크 스타일 */
+        .btn-action { margin: 10px auto; padding: 14px 0; width: 85%; display: block; background: #fff; border: 1.5px solid var(--main-pink); border-radius: 50px; color: var(--deep-pink); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
         
         /* 갤러리 */
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 0 10px; }
-        .gallery div { aspect-ratio: 1/1; overflow: hidden; }
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 15px; }
+        .gallery div { aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; }
         .gallery img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 모달 스타일 생략 (기능 동일) */
+        /* 모달 팝업 스타일 */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: white; width: 85%; border-radius: 15px; padding: 30px 20px; text-align: center; max-height: 80vh; overflow-y: auto; }
+        .modal-content { background: white; width: 85%; max-width: 380px; border-radius: 25px; padding: 35px 20px; text-align: center; }
+        .contact-row, .account-row { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; padding: 10px; border-bottom: 1px solid #f9f9f9; }
+        .acc-group-title { font-size: 1rem; color: var(--deep-pink); font-weight: 700; margin: 20px 0 10px; text-align: left; padding-left: 10px; border-left: 3px solid var(--main-pink); }
+        .acc-info-text { font-size: 0.85rem; text-align: left; color: #444; }
+        .acc-info-text b { display: block; color: #222; margin-bottom: 2px; }
+        .btn-copy { background: #f8f8f8; border: 1px solid #ddd; padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="fixed-bg"></div>
+
+    <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-pink); margin-bottom:20px;">혼주에게 연락하기</h3>
+            <div class="contact-row"><span>부 이도행 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span><span>모 마선영 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span></div>
+            <div class="contact-row"><span>부 최동식 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span><span>모 정설미 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span></div>
+            <div class="contact-row"><span>신랑 이건우 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span><span>신부 최예은 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span></div>
+            <button onclick="closeModal('contact-modal')" style="margin-top:20px; border:none; background:none; color:#999;">닫기</button>
+        </div>
+    </div>
+
+    <div id="account-modal" class="modal" onclick="closeModal('account-modal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-pink); margin-bottom:20px;">마음 전하실 곳</h3>
+            <div class="acc-group-title">신랑측</div>
+            <div class="account-row"><div class="acc-info-text"><b>부 이도행</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text"><b>모 마선영</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text"><b>신랑 이건우</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="acc-group-title">신부측</div>
+            <div class="account-row"><div class="acc-info-text"><b>부 최동식</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text"><b>모 정설미</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text"><b>신부 최예은</b>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <button onclick="closeModal('account-modal')" style="margin-top:20px; border:none; background:none; color:#999;">닫기</button>
+        </div>
+    </div>
 
     <div class="container">
         <div class="header">
@@ -102,7 +143,7 @@
 
         <div class="section" data-aos="fade-up">
             <div class="wedding-invitation-title">Wedding Invitation</div>
-            <div class="invitation-subtitle">마음을 담아, 소중한 분께</div>
+            <div class="invitation-subtitle">소중한 분들을 초대합니다</div>
             
             <div class="bible-verse">
                 “우리가 사랑함은 그가 먼저<br>우리를 사랑하셨음이라”
@@ -111,16 +152,17 @@
             <p class="invitation-text">
                 태어나 처음 배운 기도가<br>
                 삶의 문장이 된 두 사람이 만났습니다.<br><br>
-                오랜 시간 각자의 자리에서 다져온 믿음의 뿌리는<br>
+                오랜 시간<br>
+                각자의 자리에서 다져온<br>
+                믿음의 뿌리는<br>
                 이미 오래전부터 맞닿아 있던<br>
                 든든한 인연의 가지가 되어<br>
                 교정의 푸른 숨결 속에서<br>
                 비로소 하나의 꽃을 피웠습니다.<br><br>
-                가장 어두운 밤 서로의 곁을 지키며<br>
-                등불이 되어준 마음으로,<br>
                 이제 주님이 허락하신 평생의 길을<br>
                 나란히 걸으려 합니다.<br><br>
-                저희의 시작을 축복하는 예배의 자리에 오셔서<br>
+                저희의 시작을 축복하는<br>
+                예배의 자리에 오셔서<br>
                 함께 기쁨의 증인이 되어주세요.
             </p>
 
@@ -128,69 +170,50 @@
                 이도행 · 마선영의 차남 <b>이건우</b><br>
                 최동식 · 정설미의 장녀 <b>최예은</b>
             </div>
-
-            <button class="btn-action" onclick="openModal('contact-modal')">혼주에게 연락하기</button>
+            <button class="btn-action" style="margin-top:40px;" onclick="openModal('contact-modal')">혼주에게 연락하기</button>
         </div>
 
-        <div class="section calendar-section" data-aos="fade-up">
-            <div class="calendar-title">WEDDING DAY</div>
-            <div class="calendar-date-info">2026. 10. 03. 12:30 PM</div>
-            <div class="calendar-month">10</div>
+        <div class="section" data-aos="fade-up">
+            <div class="calendar-section">
+                <div class="calendar-title">OCTOBER</div>
+                <div class="calendar-month">10</div>
 
-            <div class="calendar-container">
-                <div class="calendar-grid">
-                    <div class="day-label sun">일</div><div class="day-label">월</div><div class="day-label">화</div><div class="day-label">수</div><div class="day-label">목</div><div class="day-label">금</div><div class="day-label">토</div>
-                    <div></div><div></div><div></div><div></div><div>1</div><div>2</div><div class="wedding-day">3</div>
-                    <div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
-                    <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div>
-                    <div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
-                    <div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
+                <div class="calendar-container">
+                    <div class="calendar-grid">
+                        <div class="day-label sun">SUN</div><div class="day-label">MON</div><div class="day-label">TUE</div><div class="day-label">WED</div><div class="day-label">THU</div><div class="day-label">FRI</div><div class="day-label">SAT</div>
+                        <div></div><div></div><div></div><div></div><div>1</div><div>2</div><div class="wedding-day">3</div>
+                        <div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+                        <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div>
+                        <div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
+                        <div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
+                    </div>
                 </div>
+                <p style="margin-top:25px; color:var(--deep-pink); font-weight:700;">2026. 10. 03. 12:30 PM</p>
             </div>
         </div>
 
         <div class="section" data-aos="fade-up">
-            <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; letter-spacing:3px; margin-bottom:30px;">GALLERY</h3>
+            <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-pink); letter-spacing:3px; margin-bottom:30px;">GALLERY</h3>
             <div class="gallery">
-                <div onclick="openLightbox(0)"><img src="./1.jpg"></div>
-                <div onclick="openLightbox(1)"><img src="./2.jpg"></div>
-                <div onclick="openLightbox(2)"><img src="./3.jpg"></div>
-                <div onclick="openLightbox(3)"><img src="./4.jpg"></div>
-                <div onclick="openLightbox(4)"><img src="./5.jpg"></div>
-                <div onclick="openLightbox(5)"><img src="./6.jpg"></div>
-                <div onclick="openLightbox(6)"><img src="./7.jpg"></div>
-                <div onclick="openLightbox(7)"><img src="./8.jpg"></div>
-                <div onclick="openLightbox(8)"><img src="./9.jpg"></div>
+                <div><img src="./1.jpg"></div><div><img src="./2.jpg"></div><div><img src="./3.jpg"></div>
+                <div><img src="./4.jpg"></div><div><img src="./5.jpg"></div><div><img src="./6.jpg"></div>
+                <div><img src="./7.jpg"></div><div><img src="./8.jpg"></div><div><img src="./9.jpg"></div>
             </div>
         </div>
 
-        <div class="section" data-aos="fade-up">
+        <div class="section" data-aos="fade-up" style="background:var(--soft-pink); border-radius: 50px 50px 0 0;">
             <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; margin-bottom:30px;">LOCATION</h3>
-            <p style="font-weight:700; margin-bottom:5px;">한국기독교연합회관 3층</p>
-            <p style="font-size:0.9rem; color:#666; margin-bottom:30px;">서울특별시 종로구 김상옥로 30</p>
-            <div style="display:flex; gap:15px; justify-content:center;">
+            <p style="font-weight:700;">한국기독교연합회관 3층</p>
+            <p style="font-size:0.9rem; color:#888; margin-bottom:30px;">서울특별시 종로구 김상옥로 30</p>
+            <div style="display:flex; gap:15px; justify-content:center; margin-bottom:40px;">
                 <a href="https://naver.me/FzSifb7D" target="_blank" style="text-decoration:none; color:#03cf5d; font-weight:700;">네이버 지도</a>
                 <a href="https://place.map.kakao.com/9742385" target="_blank" style="text-decoration:none; color:#3c1e1e; font-weight:700;">카카오맵</a>
             </div>
             
-            <button class="btn-action" style="margin-top:60px; background:#fce4ec; border:none; color:#a67c73; font-weight:700;" onclick="openModal('account-modal')">마음 전하실 곳</button>
+            <button class="btn-action" style="background:var(--deep-pink); color:#fff; border:none;" onclick="openModal('account-modal')">마음 전하실 곳</button>
         </div>
 
-        <p style="text-align:center; padding:40px 0; color:#ccc; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
-    </div>
-
-    <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; margin-bottom:20px;">혼주에게 연락하기</h3>
-            <button onclick="closeModal('contact-modal')" style="border:none; background:none; color:#999; margin-top:20px;">닫기</button>
-        </div>
-    </div>
-    
-    <div id="account-modal" class="modal" onclick="closeModal('account-modal')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; margin-bottom:20px;">마음 전하실 곳</h3>
-            <button onclick="closeModal('account-modal')" style="border:none; background:none; color:#999; margin-top:20px;">닫기</button>
-        </div>
+        <p style="text-align:center; padding:40px 0; color:#dbb2b9; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -198,6 +221,11 @@
         AOS.init();
         function openModal(id) { document.getElementById(id).style.display='flex'; document.body.style.overflow='hidden'; }
         function closeModal(id) { document.getElementById(id).style.display='none'; document.body.style.overflow='auto'; }
+        function copyText(text) {
+            const tempElem = document.createElement('textarea'); tempElem.value = text;
+            document.body.appendChild(tempElem); tempElem.select(); document.execCommand('copy');
+            document.body.removeChild(tempElem); alert("계좌번호가 복사되었습니다.");
+        }
     </script>
 </body>
 </html>
