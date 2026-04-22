@@ -8,73 +8,36 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root { --main-pink: #fce4ec; --text-dark: #333; --acc-brown: #a67c73; }
-        
-        body { 
-            font-family: 'Nanum Gothic', sans-serif; 
-            margin: 0; 
-            color: var(--text-dark); 
-            overflow-x: hidden; 
-            line-height: 1.8;
-            background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%);
-            background-attachment: fixed;
-        }
-
-        /* 꽃잎 레이어 */
+        body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%); background-attachment: fixed; }
         .effect-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
         .petal { position: absolute; background: rgba(255, 182, 193, 0.6); border-radius: 150% 0 150% 0; animation: rain linear infinite; }
         @keyframes rain { 0% { transform: translate(0, -100px) rotate(0deg); opacity: 1; } 100% { transform: translate(150px, 100vh) rotate(360deg); opacity: 0; } }
-
         .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); box-shadow: 0 0 40px rgba(0,0,0,0.05); position: relative; }
         
-        /* 헤더 전면 커버 스타일 */
-        .header { 
-            height: 100vh; 
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end; 
-            color: white; 
-            text-align: center;
-            overflow: hidden;
-        }
-        .header-bg {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url('./main.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            filter: brightness(0.85); 
-        }
-        .header-text-box {
-            padding-bottom: 50px; 
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3); 
-        }
-        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.2rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 20px; }
-        .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.6rem; font-weight: 700; margin: 0 0 10px 0; }
-        .header p { font-size: 0.95rem; color: rgba(255,255,255,0.8); font-weight: 700; }
+        /* 헤더 전면 커버 */
+        .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; }
+        .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: -1; filter: brightness(0.8); }
+        .header-text-box { padding-bottom: 60px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 15px; }
+        .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.6rem; font-weight: 700; margin: 0 0 12px 0; }
+        .header p { font-size: 0.9rem; color: rgba(255,255,255,0.9); font-weight: 700; margin: 4px 0; }
 
         .section { padding: 70px 25px; text-align: center; }
         .section h3 { font-family: 'Nanum Myeongjo', serif; color: var(--acc-brown); margin-bottom: 35px; font-size: 1.25rem; letter-spacing: 2px; font-weight: 700; }
-        
         .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; color: #555; margin-bottom: 30px; line-height: 2.1; font-weight: 700; }
-        .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.6; word-break: keep-all; font-weight: 700; color: #222; }
-
-        /* 가족 정보 및 연락처 버튼 스타일 */
+        .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 0.95rem; line-height: 2.4; word-break: keep-all; font-weight: 700; color: #222; }
         .family-info { margin-top: 40px; font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; }
         .family-info b { color: #000; font-weight: 700; }
         .btn-contact { margin-top: 30px; padding: 12px 25px; background: white; border: 1px solid #fce4ec; border-radius: 30px; color: #a67c73; font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-
-        /* 연락처 모달 스타일 */
+        
+        /* 모달 공통 */
         #contact-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 85%; max-width: 380px; border-radius: 20px; padding: 30px 20px; text-align: center; }
         .contact-row { display: flex; justify-content: space-around; align-items: center; margin: 15px 0; padding: 10px; border-bottom: 1px solid #f9f9f9; }
         .contact-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
         .tel-icon { text-decoration: none; font-size: 1.2rem; color: #a67c73; }
-
-        /* 갤러리/슬라이더 스타일 */
+        
+        /* 갤러리 */
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .gallery div { aspect-ratio: 1/1; background: #eee; border-radius: 6px; overflow: hidden; cursor: pointer; }
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; }
@@ -82,13 +45,21 @@
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 40px; background: none; border: none; cursor: pointer; padding: 20px; z-index: 1001; }
         .prev { left: 10px; } .next { right: 10px; }
         .close-btn { position: absolute; top: 15px; right: 20px; color: white; font-size: 35px; cursor: pointer; z-index: 1002; }
-
-        /* 지도 및 계좌 스타일 */
+        
+        /* 지도/버튼 */
         .map-btn { display: inline-block; padding: 10px 18px; border-radius: 6px; font-size: 0.9rem; font-weight: 700; text-decoration: none; margin-top: 15px; }
         .naver { background: #03cf5d; color: white; }
         .kakao { background: #fae100; color: #3c1e1e; }
-        .account-box { background: #fff; padding: 20px; border-radius: 15px; border: 2px solid #fce4ec; margin-bottom: 15px; text-align: left; }
-        .btn-kakao { background: #fee500; border: none; padding: 8px 15px; border-radius: 15px; font-size: 0.8rem; font-weight: 700; float: right; color: #3c1e1e; }
+        
+        /* 계좌 안내 */
+        .account-container { margin-top: 20px; text-align: left; }
+        .account-group { background: #fff; padding: 20px; border-radius: 15px; border: 2px solid #fce4ec; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .account-group h4 { margin: 0 0 15px 0; font-size: 1.05rem; color: var(--acc-brown); border-bottom: 1px solid #fce4ec; padding-bottom: 5px; }
+        .account-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #eee; }
+        .account-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .account-info { font-size: 0.85rem; color: #444; }
+        .account-info b { display: block; color: #222; font-size: 0.9rem; margin-bottom: 2px; }
+        .btn-copy { background: #f8f8f8; border: 1px solid #ddd; padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; cursor: pointer; color: #666; }
     </style>
 </head>
 <body>
@@ -127,20 +98,22 @@
                 <h1>WEDDING DAY</h1>
                 <h2>이건우 ♥ 최예은</h2>
                 <p>2026. 10. 03. 토요일 오후 12:30</p>
-            </div>
+                <p>한국기독교연합회관 3층</p> </div>
         </div>
 
         <div class="section" data-aos="fade-up">
             <div class="bible-verse">
-                "그런즉 믿음, 소망, 사랑, 이 세 가지는 항상 있을 것인데<br>그 중의 제일은 사랑이라"
+                “우리가 사랑함은 그가 먼저 우리를 사랑하셨음이라”
             </div>
             <p class="invitation-text">
-                언제나 변치 않는 믿음으로 소망을 품고,<br>
-                <b>서로를 향한 아낌없는 사랑</b>을 약속합니다.<br><br>
-                하나님께서 예비하신 축복의 통로 안에서<br>
-                두 사람이 하나 되어 사랑의 가정을 일구어 가려 합니다.<br><br>
-                귀한 걸음 하시어 저희의 약속이 시작되는 순간을<br>
-                함께 기뻐해 주시면 감사하겠습니다.
+                태어나 처음 배운 기도가 삶의 문장이 된 두 사람이 만났습니다.<br><br>
+                오랜 시간 각자의 자리에서 다져온 믿음의 뿌리는<br>
+                이미 오래전부터 맞닿아 있던 든든한 인연의 가지가 되어<br>
+                교정의 푸른 숨결 속에서 비로소 하나의 꽃을 피웠습니다.<br><br>
+                가장 어두운 밤 서로의 곁을 지키며 등불이 되어준 마음으로,<br>
+                이제 주님이 허락하신 평생의 길을 나란히 걸으려 합니다.<br><br>
+                저희의 시작을 축복하는 예배의 자리에 오셔서<br>
+                함께 기쁨의 증인이 되어주세요.
             </p>
             <div class="family-info">
                 이도행 · 마선영의 차남 <b>이건우</b><br>
@@ -181,25 +154,45 @@
 
         <div class="section" data-aos="fade-up">
             <h3>ACCOUNT</h3>
-            <div class="account-box">
-                <button class="btn-kakao">카톡 송금</button>
-                <p style="margin:0;"><b>신랑측</b> 부 이건우</p>
-                <span style="font-size: 1rem; font-weight: 700; color: #444; margin-top: 8px; display: block;">신한 110-XXX-XXXXXX</span>
-            </div>
-            <div class="account-box">
-                <button class="btn-kakao">카톡 송금</button>
-                <p style="margin:0;"><b>신부측</b> 부 최예은</p>
-                <span style="font-size: 1rem; font-weight: 700; color: #444; margin-top: 8px; display: block;">국민 XXX-XXXX-XXXX</span>
+            <div class="account-container">
+                <div class="account-group">
+                    <h4>신랑측</h4>
+                    <div class="account-row">
+                        <div class="account-info"><b>부 이도행</b>국민 1234-02-43-123456</div>
+                        <button class="btn-copy">복사</button>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-info"><b>모 마선영</b>국민 1234-02-43-123456</div>
+                        <button class="btn-copy">복사</button>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-info"><b>신랑 이건우</b>국민 1234-02-43-123456</div>
+                        <button class="btn-copy">복사</button>
+                    </div>
+                </div>
+                <div class="account-group">
+                    <h4>신부측</h4>
+                    <div class="account-row">
+                        <div class="account-info"><b>부 최동식</b>국민 1234-02-43-123456</div>
+                        <button class="btn-copy">복사</button>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-info"><b>모 정설미</b>국민 1234-02-43-123456</div>
+                        <button class="btn-copy">복사</button>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-info"><b>신부 최예은</b>국민 1234-02-43-123456</div>
+                        <button class="btn-copy">복사</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <p style="text-align:center; padding-bottom:50px; color:#aaa; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
+        <p style="text-align:center; padding-bottom:60px; color:#aaa; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
-        
-        // 꽃잎 효과
         const container = document.getElementById('effect-container');
         for (let i = 0; i < 20; i++) {
             const p = document.createElement('div');
@@ -210,12 +203,8 @@
             p.style.animationDuration = (Math.random() * 5 + 7) + 's';
             container.appendChild(p);
         }
-
-        // 연락처 모달 함수
         function openContact() { document.getElementById('contact-modal').style.display = 'flex'; }
         function closeContact() { document.getElementById('contact-modal').style.display = 'none'; }
-
-        // 슬라이더 함수
         const images = ['./1.jpg', './2.jpg', './3.jpg', './4.jpg', './5.jpg', './6.jpg', './7.jpg', './8.jpg', './9.jpg'];
         let currentIndex = 0;
         function openLightbox(index) { currentIndex = index; updateImg(); document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
