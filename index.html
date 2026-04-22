@@ -13,19 +13,19 @@
         body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: #fff; }
         .container { max-width: 480px; margin: 0 auto; position: relative; box-shadow: 0 0 30px rgba(255, 182, 193, 0.2); }
         
+        /* 헤더 및 디데이 */
         .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; background: transparent; }
         .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: -1; }
         .header-text-box { padding-bottom: 60px; text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.6); }
         .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 15px; }
         .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.7rem; font-weight: 700; margin: 0 0 12px 0; }
         .header p { font-size: 0.9rem; font-weight: 700; margin: 4px 0; color: #fff; }
+        .d-day { font-size: 1.1rem; color: var(--main-pink); margin-top: 15px; font-weight: 700; }
 
         .white-section { background: rgba(255, 255, 255, 0.96); }
         .section { padding: 80px 20px; text-align: center; }
 
-        /* ✅ 1. Wedding Invitation 폰트 복구 */
         .wedding-invitation-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.25rem; color: var(--deep-pink); font-style: italic; margin-bottom: 15px; letter-spacing: 1px; }
-        
         .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.8; color: #222; margin: 0 auto 50px; word-break: keep-all; text-align: center; max-width: 95%; font-weight: 400; }
         .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-pink); margin-bottom: 40px; font-weight: 700; }
         .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; border-top: 1px solid #ffebee; padding-top: 40px; }
@@ -48,6 +48,12 @@
         .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .close-slider { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; z-index: 3001; cursor: pointer; }
 
+        /* 교통정보 스타일 */
+        .transport-info { text-align: left; background: #fff; padding: 25px; border-radius: 20px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .transport-title { font-weight: 700; color: var(--deep-pink); border-bottom: 2px solid var(--soft-pink); display: inline-block; margin-bottom: 10px; font-size: 0.95rem; }
+        .transport-detail { font-size: 0.85rem; line-height: 1.7; color: #555; margin-bottom: 20px; }
+        .transport-detail b { color: #333; }
+
         .map-img-container { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid #ffebee; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .map-img-container img { width: 100%; display: block; }
         .btn-action { margin: 10px auto; padding: 14px 0; width: 85%; display: block; background: #fff; border: 1.5px solid var(--main-pink); border-radius: 50px; color: var(--deep-pink); font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; text-align: center; }
@@ -55,8 +61,6 @@
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 85%; max-width: 400px; border-radius: 25px; padding: 35px 20px; position: relative; }
         .modal-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-pink); margin-bottom: 25px; font-weight: 700; text-align: center; }
-        
-        /* ✅ 3. 연락하기 간격 조정 */
         .contact-group { margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #f9f9f9; }
         .contact-group:last-of-type { border-bottom: none; margin-bottom: 0; }
         .contact-row { display: flex; justify-content: space-evenly; align-items: center; gap: 20px; }
@@ -66,10 +70,16 @@
         .account-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f2f2f2; }
         .acc-info-text { font-size: 0.85rem; text-align: left; line-height: 1.5; color: #444; }
         .btn-copy { background: #fff1f5; border: 1px solid var(--main-pink); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; color: var(--deep-pink); cursor: pointer; }
+
+        /* BGM 제어 버튼 */
+        .bgm-btn { position: fixed; bottom: 30px; right: 20px; width: 45px; height: 45px; background: rgba(255, 255, 255, 0.8); border: 1px solid var(--main-pink); border-radius: 50%; z-index: 1000; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); font-size: 20px; }
     </style>
 </head>
 <body>
     <div class="fixed-bg"></div>
+
+    <div class="bgm-btn" onclick="toggleBGM()" id="bgmBtn">🔇</div>
+    <audio id="bgm" src="./bgm.mp3" loop></audio>
 
     <div id="slider-modal" class="slider-modal">
         <span class="close-slider" onclick="closeSlider()">&times;</span>
@@ -131,6 +141,7 @@
                 <h2>이건우 ♥ 최예은</h2>
                 <p>2026. 10. 03. 토요일 오후 12:30</p>
                 <p>한국기독교연합회관 3층</p>
+                <div id="countdown" class="d-day"></div>
             </div>
         </div>
 
@@ -177,12 +188,37 @@
                 <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-pink); letter-spacing:3px; margin-bottom:30px;">LOCATION</h3>
                 <p style="font-weight:700;">한국기독교연합회관 3층</p>
                 <p style="font-size:0.9rem; color:#888; margin-bottom:25px;">서울특별시 종로구 김상옥로 30</p>
+                <p style="font-size:0.95rem; color:var(--deep-pink); font-weight:700; margin-bottom:20px;">🍴 연회장은 지하 1층에 마련되어 있습니다.</p>
+                
                 <div class="map-img-container"><img src="./map.jpg" alt="약도"></div>
+                
                 <div style="display:flex; gap:15px; justify-content:center; margin-bottom:40px;">
                     <a href="https://naver.me/FzSifb7D" target="_blank" class="btn-action" style="width:auto; padding:12px 25px; border-radius:30px; margin:0;">네이버 지도</a>
                     <a href="https://place.map.kakao.com/9742385" target="_blank" class="btn-action" style="width:auto; padding:12px 25px; border-radius:30px; margin:0;">카카오맵</a>
                 </div>
-                <button class="btn-action" style="background:var(--deep-pink); color:#fff; border:none;" onclick="openModal('account-modal')">마음 전하실 곳</button>
+
+                <div class="transport-info">
+                    <div class="transport-title">🚇 지하철 안내</div>
+                    <div class="transport-detail"><b>1호선 종로5가역</b> 하차 후 <b>2번 출구</b>에서 도보 5분 거리</div>
+                    
+                    <div class="transport-title">🚌 버스 안내</div>
+                    <div class="transport-detail">
+                        <b>종로5가.효제초등학교 [01-025]</b><br>
+                        간선: 100, 102, 104, 106, 107, 108, 140, 150, 160, 273<br>
+                        지선: 7025<br><br>
+                        <b>종로5가.광장시장 [01-020]</b><br>
+                        간선: 101, 103, 201, 260, 262, 270, 271A, 271B, 370, 720, 721, N15, N26, N62<br>
+                        지선: 7212 / 좌석: 9301
+                    </div>
+                    
+                    <div class="transport-title">🚗 주차 및 연락처</div>
+                    <div class="transport-detail">
+                        회관 내 <b>주차 무료</b> 이용 가능<br>
+                        문의: 02-708-4040, 4888
+                    </div>
+                </div>
+
+                <button class="btn-action" style="background:var(--deep-pink); color:#fff; border:none; margin-top:40px;" onclick="openModal('account-modal')">마음 전하실 곳</button>
             </div>
             <p style="text-align:center; padding:40px 0; color:#dbb2b9; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
         </div>
@@ -193,6 +229,26 @@
     <script>
         AOS.init();
         const swiper = new Swiper(".mySwiper", { pagination: { el: ".swiper-pagination", clickable: true }, loop: true });
+        
+        // 디데이 계산기
+        function updateCountdown() {
+            const weddingDate = new Date("2026-10-03T12:30:00").getTime();
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const display = days > 0 ? `우리가 함께할 날까지 ${days}일` : (days === 0 ? "오늘이 바로 그날입니다! ❤️" : "행복하게 잘 살겠습니다!");
+            document.getElementById("countdown").innerText = display;
+        }
+        updateCountdown();
+
+        // BGM 컨트롤
+        const bgm = document.getElementById('bgm');
+        const bgmBtn = document.getElementById('bgmBtn');
+        function toggleBGM() {
+            if (bgm.paused) { bgm.play(); bgmBtn.innerText = "🎵"; }
+            else { bgm.pause(); bgmBtn.innerText = "🔇"; }
+        }
+
         function openSlider(idx) { document.getElementById('slider-modal').style.display='flex'; swiper.slideToLoop(idx, 0); document.body.style.overflow='hidden'; }
         function closeSlider() { document.getElementById('slider-modal').style.display='none'; document.body.style.overflow='auto'; }
         function openModal(id) { document.getElementById(id).style.display='flex'; document.body.style.overflow='hidden'; }
