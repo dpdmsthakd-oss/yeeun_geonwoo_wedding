@@ -3,101 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation: Geonwoo & Yeeun</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>예은 ♡ 건우 결혼합니다</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --main-color: #fce4ec; --text-color: #555; }
-        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: #fffafb; color: var(--text-color); overflow-x: hidden; }
+        body { background-color: #f8f1f1; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; font-family: 'Nanum Myeongjo', serif; }
+        .envelope-wrapper { position: relative; cursor: pointer; margin-top: 80px; margin-bottom: 50px; }
+        .envelope { position: relative; width: 320px; height: 220px; background-color: #d1bfa7; border-radius: 0 0 10px 10px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .envelope::before { content: ""; position: absolute; top: 0; z-index: 4; border-top: 120px solid #c2b09a; border-left: 160px solid transparent; border-right: 160px solid transparent; transform-origin: top; transition: transform 0.6s ease-in-out; }
+        .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
+        .letter { position: absolute; bottom: 10px; left: 10px; width: 300px; height: 200px; background-color: white; padding: 25px; box-sizing: border-box; transition: transform 0.6s ease-in-out, height 0.6s ease-in-out; z-index: 2; text-align: center; overflow: hidden; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
+        .envelope-wrapper.open .letter { transform: translateY(-100px); height: auto; min-height: 650px; padding-bottom: 40px; }
+        .main-img { width: 100%; border-radius: 5px; margin-bottom: 20px; }
         
-        /* 비눗방울 배경 효과 */
-        .bubbles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
-        .bubble { position: absolute; bottom: -100px; width: 20px; height: 20px; background: rgba(255, 182, 193, 0.3); border-radius: 50%; animation: rise 10s infinite ease-in; }
-        @keyframes rise {
-            0% { bottom: -100px; transform: translateX(0); opacity: 1; }
-            100% { bottom: 100vh; transform: translateX(100px); opacity: 0; }
+        /* 물방울 하트 애니메이션 */
+        .drop-seal { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 5; }
+        .water-drop { width: 20px; height: 20px; background-color: #ffb7c5; border-radius: 0 50% 50% 50%; transform: rotate(45deg); animation: drip 2s infinite; }
+        @keyframes drip {
+            0% { transform: translateY(-100px) scale(0.8) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(0) scale(1.5) rotate(0deg); border-radius: 50%; background-color: #ff6b81; opacity: 0; }
         }
+        .water-drop::before, .water-drop::after { content: ''; position: absolute; width: 100%; height: 100%; background-color: inherit; border-radius: 50%; }
+        .water-drop::before { top: -50%; left: 0; }
+        .water-drop::after { left: -50%; top: 0; }
 
-        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); }
-        
-        .header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(to bottom, rgba(252, 228, 236, 0.5), transparent); }
-        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.5rem; letter-spacing: 5px; color: #b8928a; margin-bottom: 30px; }
-        .main-img { width: 85%; aspect-ratio: 3/4; background: #eee; border-radius: 200px 200px 0 0; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-        .section { padding: 80px 30px; text-align: center; }
-        .section h3 { font-family: 'Nanum Myeongjo', serif; color: #b8928a; margin-bottom: 30px; font-size: 1.2rem; }
-        
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .gallery div { aspect-ratio: 1/1; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
-
-        .account-box { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); margin-bottom: 20px; text-align: left; }
-        .btn-kakao { background: #fee500; border: none; padding: 8px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; float: right; }
-
-        /* 무빙 효과를 위한 여백 */
-        [data-aos] { transition-duration: 1000ms; }
+        /* 버튼 스타일 */
+        .map-btn { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #8d7d66; color: white; text-decoration: none; border-radius: 5px; font-size: 13px; }
     </style>
 </head>
 <body>
-    <div class="bubbles" id="bubble-container"></div>
-
-    <div class="container">
-        <div class="header" data-aos="fade-up">
-            <h1>SAVE THE DATE</h1>
-            <div class="main-img">
-                <img src="./main.jpg" alt="메인사진" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <div class="envelope-wrapper" onclick="this.classList.toggle('open')">
+        <div class="drop-seal"><div class="water-drop"></div></div>
+        <div class="envelope"></div>
+        <div class="letter">
+            <img src="main.jpg.jpg" alt="Wedding Photo" class="main-img">
+            <h2 style="color:#555; font-size: 20px;">이건우 ♡ 최예은</h2>
+            <p style="color:#777; line-height:1.8; font-size: 15px;">
+                서로가 마주 보며 다진 약속을<br>
+                믿음으로 지켜나가겠습니다.<br>
+                귀한 걸음으로 축복해 주세요.
+            </p>
+            
+            <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px; font-size:14px; color:#444; line-height: 2;">
+                <p><b>일시:</b> 2026년 10월 3일(토) 낮 12시 30분</p>
+                <p><b>장소:</b> 한국기독교연합회관 웨딩홀</p>
+                <p style="font-size: 12px; color: #888;">(서울 종로구 김상옥로 30)</p>
+                
+                <a href="https://m.map.naver.com/search2/search.naver?query=한국기독교연합회관웨딩홀" target="_blank" class="map-btn">네이버 지도 보기</a>
             </div>
-            <h2 style="margin-top:30px; font-weight:300;">이건우 & 최예은</h2>
-            <p style="letter-spacing:1px; font-size:0.9rem;">2026. 10. 03. 토요일 오후 12:30</p>
-        </div>
 
-        <div class="section" data-aos="fade-up">
-            <h3>INVITATION</h3>
-            <p style="line-height:2.5;">함께 맞는 열 번째 가을,<br>저희 두 사람이 사랑과 신뢰로<br>하나가 되려 합니다.<br><br>귀한 걸음 하시어 저희의 시작을<br>축복해 주시면 감사하겠습니다.</p>
-        </div>
-
-        <div class="section" data-aos="fade-up">
-            <h3>GALLERY</h3>
-            <div class="gallery">
-                <div><img src="./1.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <div><img src="./2.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <div><img src="./3.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <div><img src="./4.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <div><img src="./5.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <div><img src="./6.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <div><img src="./7.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <div><img src="./8.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
-                <div><img src="./9.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px; font-size:13px;">
+                <p style="color: #8d7d66; font-weight: bold;">마음 전하실 곳</p>
+                <p>신부 최예은: 국민 123-456789-01</p>
+                <p>신랑 이건우: 신한 987-654321-02</p>
             </div>
-        </div>
-
-        <div class="section" data-aos="fade-up">
-            <h3>ACCOUNT</h3>
-            <div class="account-box">
-                <button class="btn-kakao">송금</button>
-                <p style="margin:0;"><b>신랑측</b> 부 이건우</p>
-                <p style="margin:5px 0 0; font-size:0.9rem;">신한 110-XXX-XXXXXX</p>
-            </div>
-            <div class="account-box">
-                <button class="btn-kakao">송금</button>
-                <p style="margin:0;"><b>신부측</b> 부 최예은</p>
-                <p style="margin:5px 0 0; font-size:0.9rem;">국민 XXX-XXXX-XXXX</p>
-            </div>
+            
+            <p style="font-size:11px; color:#bbb; margin-top:40px;">봉투를 터치하면 닫힙니다.</p>
         </div>
     </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-        const container = document.getElementById('bubble-container');
-        for (let i = 0; i < 15; i++) {
-            const bubble = document.createElement('div');
-            bubble.classList.add('bubble');
-            bubble.style.left = Math.random() * 100 + '%';
-            bubble.style.width = bubble.style.height = (Math.random() * 30 + 10) + 'px';
-            bubble.style.animationDelay = Math.random() * 10 + 's';
-            bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            container.appendChild(bubble);
-        }
-    </script>
 </body>
 </html>
