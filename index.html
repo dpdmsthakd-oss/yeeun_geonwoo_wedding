@@ -4,52 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation: Geonwoo & Yeeun</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        :root { --main-color: #fce4ec; --text-color: #555; }
-        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: #fffafb; color: var(--text-color); overflow-x: hidden; }
+        :root { --main-color: #fce4ec; --text-color: #444; }
+        /* 글씨체 설정 */
+        body { font-family: 'Nanum Gothic', sans-serif; margin: 0; background: #fffafb; color: var(--text-color); overflow-x: hidden; line-height: 1.8; }
+        h1, h3, .bible-verse, .invitation-text { font-family: 'Nanum Myeongjo', serif; }
+
+        /* 비눗방울 배경 */
         .bubbles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
         .bubble { position: absolute; bottom: -100px; width: 20px; height: 20px; background: rgba(255, 182, 193, 0.3); border-radius: 50%; animation: rise 10s infinite ease-in; }
         @keyframes rise {
             0% { bottom: -100px; transform: translateX(0); opacity: 1; }
             100% { bottom: 100vh; transform: translateX(100px); opacity: 0; }
         }
-        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); }
-        .header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(to bottom, rgba(252, 228, 236, 0.5), transparent); }
-        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.2rem; letter-spacing: 5px; color: #b8928a; margin-bottom: 30px; }
-        .main-img { width: 85%; aspect-ratio: 3/4; background: #eee; border-radius: 200px 200px 0 0; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(5px); box-shadow: 0 0 30px rgba(0,0,0,0.05); }
+        
+        /* 헤더/표지 */
+        .header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(to bottom, rgba(252, 228, 236, 0.4), transparent); }
+        .header h1 { font-size: 1.3rem; letter-spacing: 6px; color: #b8928a; margin-bottom: 35px; }
+        .main-img { width: 80%; aspect-ratio: 3/4; background: #eee; border-radius: 180px 180px 10px 10px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+
         .section { padding: 80px 30px; text-align: center; }
-        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; color: #888; margin-bottom: 20px; font-style: italic; }
-        .section h3 { font-family: 'Nanum Myeongjo', serif; color: #b8928a; margin-bottom: 30px; font-size: 1.2rem; }
+        .section h3 { color: #b8928a; margin-bottom: 40px; font-size: 1.2rem; letter-spacing: 3px; }
+        
+        .bible-verse { font-size: 0.9rem; color: #888; margin-bottom: 30px; line-height: 2; }
+        .invitation-text { font-size: 1rem; line-height: 2.5; word-break: keep-all; }
+
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .gallery div { aspect-ratio: 1/1; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
-        .account-box { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); margin-bottom: 20px; text-align: left; }
-        .btn-kakao { background: #fee500; border: none; padding: 8px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; float: right; }
-        [data-aos] { transition-duration: 1000ms; }
+        .gallery div { aspect-ratio: 1/1; background: #f5f5f5; border-radius: 4px; overflow: hidden; }
+
+        /* 지도 버튼 스타일 */
+        .map-btn { display: inline-block; padding: 10px 18px; border-radius: 5px; font-size: 0.85rem; font-weight: bold; text-decoration: none; transition: 0.3s; }
+        .naver { background: #03cf5d; color: white; }
+        .kakao { background: #fae100; color: #3c1e1e; }
+
+        .account-box { background: #fdfdfd; padding: 25px; border-radius: 15px; border: 1px solid #f0f0f0; margin-bottom: 20px; text-align: left; }
+        .btn-kakao { background: #fee500; border: none; padding: 8px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; float: right; color: #3c1e1e; }
     </style>
 </head>
 <body>
     <div class="bubbles" id="bubble-container"></div>
+
     <div class="container">
         <div class="header" data-aos="fade-up">
-            <h1>MARRIAGE VOWS</h1>
+            <h1>WEDDING DAY</h1>
             <div class="main-img">
                 <img src="./main.jpg" alt="메인사진" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
-            <h2 style="margin-top:30px; font-weight:300;">이건우 & 최예은</h2>
-            <p style="letter-spacing:1px; font-size:0.9rem;">2026. 10. 03. 토요일 오후 12:30</p>
+            <h2 style="margin-top:40px; font-weight:400; font-family:'Nanum Myeongjo';">이건우 & 최예은</h2>
+            <p style="letter-spacing:1px; font-size:0.9rem; color:#999;">2026. 10. 03. 토요일 오후 12:30</p>
         </div>
 
         <div class="section" data-aos="fade-up">
             <div class="bible-verse">
                 "그런즉 믿음, 소망, 사랑, 이 세 가지는 항상 있을 것인데<br>그 중의 제일은 사랑이라"<br>(고린도전서 13:13)
             </div>
-            <p style="line-height:2.2; font-size: 0.95rem;">
+            <p class="invitation-text">
                 언제나 변치 않는 믿음으로 소망을 품고,<br>
                 서로를 향한 아낌없는 사랑을 약속합니다.<br><br>
                 하나님께서 예비하신 축복의 통로 안에서<br>
-                두 사람이 하나 되어 작은 천국을 일구어 가려 합니다.<br><br>
+                두 사람이 하나 되어 사랑의 가정을 일구어 가려 합니다.<br><br>
                 귀한 걸음 하시어 저희의 약속이 시작되는 순간을<br>
                 함께 기뻐해 주시면 감사하겠습니다.
             </p>
@@ -72,10 +89,18 @@
 
         <div class="section" data-aos="fade-up">
             <h3>LOCATION</h3>
-            <p style="font-weight: bold;">한국기독교연합회관 3층</p>
-            <p style="font-size: 0.9rem; color: #888;">서울특별시 종로구 김상옥로 30</p>
-            <div style="margin-top: 20px; border-radius: 10px; overflow: hidden;">
-                <img src="./map.png" style="width: 100%; display: block;">
+            <p style="font-weight: bold; margin-bottom: 5px;">한국기독교연합회관 3층</p>
+            <p style="font-size: 0.9rem; color: #888; margin-bottom: 25px;">서울특별시 종로구 김상옥로 30</p>
+            
+            <a href="https://naver.me/FzSifb7D" target="_blank">
+                <div style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <img src="./map.png" alt="약도" style="width: 100%; display: block;">
+                </div>
+            </a>
+
+            <div style="margin-top: 25px; display: flex; gap: 10px; justify-content: center;">
+                <a href="https://map.naver.com/p/entry/place/11621381" target="_blank" class="map-btn naver">네이버 지도</a>
+                <a href="https://kko.to/vD_FjX-9Z" target="_blank" class="map-btn kakao">카카오맵</a>
             </div>
         </div>
 
@@ -84,14 +109,16 @@
             <div class="account-box">
                 <button class="btn-kakao">송금</button>
                 <p style="margin:0;"><b>신랑측</b> 부 이건우</p>
-                <p style="margin:5px 0 0; font-size:0.9rem;">신한 110-XXX-XXXXXX</p>
+                <p style="margin:8px 0 0; font-size:0.9rem; color:#666;">신한 110-XXX-XXXXXX</p>
             </div>
             <div class="account-box">
                 <button class="btn-kakao">송금</button>
                 <p style="margin:0;"><b>신부측</b> 부 최예은</p>
-                <p style="margin:5px 0 0; font-size:0.9rem;">국민 XXX-XXXX-XXXX</p>
+                <p style="margin:8px 0 0; font-size:0.9rem; color:#666;">국민 XXX-XXXX-XXXX</p>
             </div>
         </div>
+
+        <p style="padding-bottom: 50px; font-size: 0.8rem; color: #ccc;">Copyright 2026. Geonwoo & Yeeun</p>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
