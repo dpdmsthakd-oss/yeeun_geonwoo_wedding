@@ -3,42 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예은 ♡ 건우 결혼합니다</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+    <title>Wedding Invitation: Geonwoo & Yeeun</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        body { background-color: #fcfaf9; margin: 0; font-family: 'Nanum Myeongjo', serif; color: #333; display: flex; flex-direction: column; align-items: center; }
-        .container { width: 100%; max-width: 450px; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.05); padding-bottom: 50px; }
+        :root { --main-color: #fce4ec; --text-color: #555; }
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: #fffafb; color: var(--text-color); overflow-x: hidden; }
         
-        /* 💧 상단 물방울 하트 감성존 */
-        .top-visual { height: 150px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; background: #fff5f5; }
-        .water-drop { position: absolute; width: 20px; height: 20px; background-color: #ffb7c5; border-radius: 0 50% 50% 50%; transform: rotate(45deg); animation: drip 2s infinite; }
-        @keyframes drip {
-            0% { transform: translateY(-80px) scale(0.8) rotate(45deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(20px) scale(1.5) rotate(0deg); border-radius: 50%; background-color: #ff6b81; opacity: 0; }
+        /* 비눗방울 배경 효과 */
+        .bubbles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .bubble { position: absolute; bottom: -100px; width: 20px; height: 20px; background: rgba(255, 182, 193, 0.3); border-radius: 50%; animation: rise 10s infinite ease-in; }
+        @keyframes rise {
+            0% { bottom: -100px; transform: translateX(0); opacity: 1; }
+            100% { bottom: 100vh; transform: translateX(100px); opacity: 0; }
         }
-        .water-drop::before, .water-drop::after { content: ''; position: absolute; width: 100%; height: 100%; background-color: inherit; border-radius: 50%; }
-        .water-drop::before { top: -50%; left: 0; }
-        .water-drop::after { left: -50%; top: 0; }
 
-        /* 메인 사진 */
-        .main-img-wrap { padding: 20px; }
-        .main-img-wrap img { width: 100%; border-radius: 5px; }
-
-        /* 섹션 공통 스타일 */
-        .section { padding: 40px 20px; text-align: center; border-bottom: 1px solid #f0f0f0; }
-        .section-title { font-size: 14px; color: #8d7d66; letter-spacing: 2px; margin-bottom: 20px; font-weight: bold; }
+        .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); }
         
-        /* 📸 3x3 갤러리 */
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; padding: 0 20px; }
-        .gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 2px; }
+        .header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(to bottom, rgba(252, 228, 236, 0.5), transparent); }
+        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.5rem; letter-spacing: 5px; color: #b8928a; margin-bottom: 30px; }
+        .main-img { width: 85%; aspect-ratio: 3/4; background: #eee; border-radius: 200px 200px 0 0; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-        /* 📅 달력 디자인 */
-        .calendar { display: inline-block; width: 100%; max-width: 300px; margin-top: 10px; }
-        .calendar-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        .calendar-table th { padding: 10px; color: #888; font-weight: normal; }
-        .calendar-table td { padding: 10px; position: relative; }
-        .today { background: #ff6b81; color: white; border-radius: 50%; display: inline-block; width: 25px; height: 25px; line-height: 25px; }
+        .section { padding: 80px 30px; text-align: center; }
+        .section h3 { font-family: 'Nanum Myeongjo', serif; color: #b8928a; margin-bottom: 30px; font-size: 1.2rem; }
+        
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .gallery div { aspect-ratio: 1/1; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
 
-        /* 버튼 및 기타 */
-        .map-btn { display: inline-block; padding: 12px 25px; background-color: #8d7
+        .account-box { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); margin-bottom: 20px; text-align: left; }
+        .btn-kakao { background: #fee500; border: none; padding: 8px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; float: right; }
+
+        /* 무빙 효과를 위한 여백 */
+        [data-aos] { transition-duration: 1000ms; }
+    </style>
+</head>
+<body>
+    <div class="bubbles" id="bubble-container"></div>
+
+    <div class="container">
+        <div class="header" data-aos="fade-up">
+            <h1>SAVE THE DATE</h1>
+            <div class="main-img">
+                <img src="./main.jpg" alt="메인사진" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h2 style="margin-top:30px; font-weight:300;">이건우 & 최예은</h2>
+            <p style="letter-spacing:1px; font-size:0.9rem;">2026. 10. 03. 토요일 오후 12:30</p>
+        </div>
+
+        <div class="section" data-aos="fade-up">
+            <h3>INVITATION</h3>
+            <p style="line-height:2.5;">함께 맞는 열 번째 가을,<br>저희 두 사람이 사랑과 신뢰로<br>하나가 되려 합니다.<br><br>귀한 걸음 하시어 저희의 시작을<br>축복해 주시면 감사하겠습니다.</p>
+        </div>
+
+        <div class="section" data-aos="fade-up">
+            <h3>GALLERY</h3>
+            <div class="gallery">
+                <div><img src="./1.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div><img src="./2.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div><img src="./3.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div><img src="./4.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div><img src="./5.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div><img src="./6.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div><img src="./7.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div><img src="./8.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+                <div><img src="./9.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+        </div>
+
+        <div class="section" data-aos="fade-up">
+            <h3>ACCOUNT</h3>
+            <div class="account-box">
+                <button class="btn-kakao">송금</button>
+                <p style="margin:0;"><b>신랑측</b> 부 이건우</p>
+                <p style="margin:5px 0 0; font-size:0.9rem;">신한 110-XXX-XXXXXX</p>
+            </div>
+            <div class="account-box">
+                <button class="btn-kakao">송금</button>
+                <p style="margin:0;"><b>신부측</b> 부 최예은</p>
+                <p style="margin:5px 0 0; font-size:0.9rem;">국민 XXX-XXXX-XXXX</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        const container = document.getElementById('bubble-container');
+        for (let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.width = bubble.style.height = (Math.random() * 30 + 10) + 'px';
+            bubble.style.animationDelay = Math.random() * 10 + 's';
+            bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            container.appendChild(bubble);
+        }
+    </script>
+</body>
+</html>
