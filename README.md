@@ -53,7 +53,7 @@
 
             <div class="section">
                 <div class="section-title">WEDDING DAY</div>
-                <p>2026년 10월 3일 (토) 오후 12:00</p>
+                <p>2026년 10월 3일 (토) 오후 12:30</p>
                 </div>
 
             <div class="section">
