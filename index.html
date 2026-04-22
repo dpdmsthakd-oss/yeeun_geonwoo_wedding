@@ -9,40 +9,31 @@
     <style>
         :root { --main-color: #fce4ec; --text-color: #555; }
         body { font-family: 'Noto Sans KR', sans-serif; margin: 0; background: #fffafb; color: var(--text-color); overflow-x: hidden; }
-        
-        /* 비눗방울 배경 효과 */
         .bubbles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
         .bubble { position: absolute; bottom: -100px; width: 20px; height: 20px; background: rgba(255, 182, 193, 0.3); border-radius: 50%; animation: rise 10s infinite ease-in; }
         @keyframes rise {
             0% { bottom: -100px; transform: translateX(0); opacity: 1; }
             100% { bottom: 100vh; transform: translateX(100px); opacity: 0; }
         }
-
         .container { max-width: 480px; margin: 0 auto; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); }
-        
         .header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(to bottom, rgba(252, 228, 236, 0.5), transparent); }
-        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.5rem; letter-spacing: 5px; color: #b8928a; margin-bottom: 30px; }
+        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.2rem; letter-spacing: 5px; color: #b8928a; margin-bottom: 30px; }
         .main-img { width: 85%; aspect-ratio: 3/4; background: #eee; border-radius: 200px 200px 0 0; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
         .section { padding: 80px 30px; text-align: center; }
+        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 0.9rem; color: #888; margin-bottom: 20px; font-style: italic; }
         .section h3 { font-family: 'Nanum Myeongjo', serif; color: #b8928a; margin-bottom: 30px; font-size: 1.2rem; }
-        
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .gallery div { aspect-ratio: 1/1; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
-
         .account-box { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); margin-bottom: 20px; text-align: left; }
         .btn-kakao { background: #fee500; border: none; padding: 8px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; float: right; }
-
-        /* 무빙 효과를 위한 여백 */
         [data-aos] { transition-duration: 1000ms; }
     </style>
 </head>
 <body>
     <div class="bubbles" id="bubble-container"></div>
-
     <div class="container">
         <div class="header" data-aos="fade-up">
-            <h1>SAVE THE DATE</h1>
+            <h1>MARRIAGE VOWS</h1>
             <div class="main-img">
                 <img src="./main.jpg" alt="메인사진" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
@@ -51,8 +42,17 @@
         </div>
 
         <div class="section" data-aos="fade-up">
-            <h3>INVITATION</h3>
-            <p style="line-height:2.5;">함께 맞는 열 번째 가을,<br>저희 두 사람이 사랑과 신뢰로<br>하나가 되려 합니다.<br><br>귀한 걸음 하시어 저희의 시작을<br>축복해 주시면 감사하겠습니다.</p>
+            <div class="bible-verse">
+                "그런즉 믿음, 소망, 사랑, 이 세 가지는 항상 있을 것인데<br>그 중의 제일은 사랑이라"<br>(고린도전서 13:13)
+            </div>
+            <p style="line-height:2.2; font-size: 0.95rem;">
+                언제나 변치 않는 믿음으로 소망을 품고,<br>
+                서로를 향한 아낌없는 사랑을 약속합니다.<br><br>
+                하나님께서 예비하신 축복의 통로 안에서<br>
+                두 사람이 하나 되어 작은 천국을 일구어 가려 합니다.<br><br>
+                귀한 걸음 하시어 저희의 약속이 시작되는 순간을<br>
+                함께 기뻐해 주시면 감사하겠습니다.
+            </p>
         </div>
 
         <div class="section" data-aos="fade-up">
@@ -67,6 +67,15 @@
                 <div><img src="./7.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
                 <div><img src="./8.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
                 <div><img src="./9.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+            </div>
+        </div>
+
+        <div class="section" data-aos="fade-up">
+            <h3>LOCATION</h3>
+            <p style="font-weight: bold;">한국기독교연합회관 3층</p>
+            <p style="font-size: 0.9rem; color: #888;">서울특별시 종로구 김상옥로 30</p>
+            <div style="margin-top: 20px; border-radius: 10px; overflow: hidden;">
+                <img src="./map.png" style="width: 100%; display: block;">
             </div>
         </div>
 
