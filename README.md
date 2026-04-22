@@ -3,117 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예은 & 건우의 편지</title>
+    <title>예은 ♥ 건우의 결혼식</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* (기존 배경, 봉투, 편지 CSS는 그대로 유지) */
-        body { background-color: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Nanum Myeongjo', serif; }
-        .envelope-wrapper { position: relative; cursor: pointer; }
-        .envelope { position: relative; width: 300px; height: 200px; background-color: #d1bfa7; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; z-index: 1; }
-        .envelope::before { content: ""; position: absolute; top: 0; z-index: 4; border-top: 110px solid #c2b09a; border-left: 150px solid transparent; border-right: 150px solid transparent; transform-origin: top; transition: transform 0.5s ease-in-out; }
+        body { background-color: #f8f1f1; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; font-family: 'Nanum Myeongjo', serif; overflow-x: hidden; }
+        .envelope-wrapper { position: relative; cursor: pointer; margin-top: 100px; margin-bottom: 50px; }
+        .envelope { position: relative; width: 320px; height: 220px; background-color: #d1bfa7; border-radius: 0 0 10px 10px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .envelope::before { content: ""; position: absolute; top: 0; z-index: 4; border-top: 120px solid #c2b09a; border-left: 160px solid transparent; border-right: 160px solid transparent; transform-origin: top; transition: transform 0.6s ease-in-out; }
         .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
-        .letter { position: absolute; bottom: 10px; left: 10px; width: 280px; height: 180px; background-color: white; padding: 20px; box-sizing: border-box; transition: transform 0.5s ease-in-out; z-index: 2; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); text-align: center; }
-        .envelope-wrapper.open .letter { transform: translateY(-120px); height: auto; min-height: 250px; }
-        .letter h2 { font-size: 18px; color: #555; }
-        .letter p { font-size: 14px; line-height: 1.6; color: #777; }
         
+        /* 편지지 (모든 정보가 담기는 곳) */
+        .letter { position: absolute; bottom: 10px; left: 10px; width: 300px; height: 200px; background-color: white; padding: 25px; box-sizing: border-box; transition: transform 0.6s ease-in-out, height 0.6s ease-in-out; z-index: 2; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); overflow: hidden; text-align: center; }
+        .envelope-wrapper.open .letter { transform: translateY(-50px); height: auto; min-height: 800px; padding-bottom: 50px; }
 
-        /* --- 💧 물방울 하트 애니메이션 CSS --- */
-        .drop-seal {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 5;
-            transition: opacity 0.3s;
-        }
+        /* 이미지 스타일 */
+        .main-img { width: 100%; border-radius: 5px; margin-bottom: 20px; }
+        
+        /* 섹션 스타일 (달력, 지도 등) */
+        .section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
+        .section-title { font-weight: bold; color: #8d7d66; margin-bottom: 10px; }
+        
+        /* 계좌번호 스타일 */
+        .account-box { background: #f9f9f9; padding: 10px; border-radius: 5px; font-size: 13px; text-align: left; line-height: 1.8; margin-top: 10px; }
 
-        /* 물방울 모양 (떨어지기 전) */
-        .water-drop {
-            width: 20px;
-            height: 20px;
-            background-color: #ffb7c5; /* 연한 하트 핑크색 */
-            border-radius: 0 50% 50% 50%;
-            transform: rotate(45deg);
-            animation: drip 1.5s infinite; /* 톡 떨어지는 애니메이션 */
-            opacity: 0.8;
-        }
-
-        /* 봉투 열릴 때 인장 숨기기 */
-        .envelope-wrapper.open .drop-seal {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* [핵심] 떨어지는 애니메이션 정의 */
+        /* 💧 물방울 하트 애니메이션 */
+        .drop-seal { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 5; }
+        .water-drop { width: 20px; height: 20px; background-color: #ffb7c5; border-radius: 0 50% 50% 50%; transform: rotate(45deg); animation: drip 2s infinite; }
+        .envelope-wrapper.open .drop-seal { display: none; }
         @keyframes drip {
             0% { transform: translateY(-100px) scale(0.8) rotate(45deg); opacity: 0; }
             50% { opacity: 1; }
-            80% { 
-                transform: translateY(0) scale(1) rotate(45deg); /* 봉투에 딱 닿음 */
-                border-radius: 0 50% 50% 50%; /* 아직 물방울 모양 */
-            }
-            100% { 
-                transform: translateY(0) scale(1.5) rotate(0deg); /* 퍼지면서 하트 모양으로 변신! */
-                border-radius: 50%; /* 하트 기초 모양 */
-                background-color: #ff6b81; /* 진한 하트 핑크색 */
-                box-shadow: 0 0 10px rgba(255, 107, 129, 0.5);
-                opacity: 0; /* 터지면서 사라짐 */
-            }
+            100% { transform: translateY(0) scale(1.5) rotate(0deg); border-radius: 50%; background-color: #ff6b81; opacity: 0; }
         }
-
-        /* 하트 모양을 만들기 위한 가상 요소 (CSS 하트) */
-        .water-drop::before,
-        .water-drop::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: inherit;
-            border-radius: 50%;
-            transition: all 0.5s;
-        }
+        .water-drop::before, .water-drop::after { content: ''; position: absolute; width: 100%; height: 100%; background-color: inherit; border-radius: 50%; }
         .water-drop::before { top: -50%; left: 0; }
         .water-drop::after { left: -50%; top: 0; }
-        /* ---------------------------------- */
-
     </style>
 </head>
 <body>
 
-    <div class="envelope-wrapper" onclick="openEnvelope()">
-        
-        <div class="drop-seal">
-            <div class="water-drop"></div>
-        </div>
-
+    <div class="envelope-wrapper" onclick="this.classList.toggle('open')">
+        <div class="drop-seal"><div class="water-drop"></div></div>
         <div class="envelope"></div>
         <div class="letter">
-            <h2>사랑하는 분들에게</h2>
-            <p>
-                함께 있을 때 가장 나다워지는<br>
-                서로를 만났습니다.<br><br>
-                저희의 새로운 시작을<br>
-                가장 가까운 곳에서 축복해 주세요.
-            </p>
-            <p><strong>2026년 10월 어느 날</strong><br>이건우 · 최예은 드림</p>
+            <img src="main.jpg.jpg" alt="우리 사진" class="main-img">
+            
+            <h2>최예은 ♡ 이건우</h2>
+            <p>저희 두 사람이 사랑으로 만나<br>진실한 가약을 맺고자 합니다.</p>
+
+            <div class="section">
+                <div class="section-title">WEDDING DAY</div>
+                <p>2026년 10월 3일 (토) 오후 12:00</p>
+                </div>
+
+            <div class="section">
+                <div class="section-title">LOCATION</div>
+                <p>한국기독교연합회관웨딩홀</p>
+                <div style="background:#eee; height:150px; line-height:150px; color:#aaa;">https://naver.me/FzSifb7D</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">마음 전하실 곳</div>
+                <div class="account-box">
+                    <b>신부측:</b> 국민은행 123-456-789 (최예은)<br>
+                    <b>신랑측:</b> 신한은행 987-654-321 (이건우)
+                </div>
+            </div>
+            
+            <p style="margin-top:40px; font-size:12px; color:#aaa;">봉투를 다시 누르면 닫힙니다.</p>
         </div>
     </div>
 
-    <script>
-        // 무한 반복되는 물방울 애니메이션을 봉투 클릭 시 멈추게 하는 스크립트
-        function openEnvelope() {
-            const wrapper = document.querySelector('.envelope-wrapper');
-            const drop = document.querySelector('.water-drop');
-            
-            wrapper.classList.toggle('open');
-            
-            // 봉투가 열리면 물방울 애니메이션 멈춤
-            if (wrapper.classList.contains('open')) {
-                drop.style.animation = 'none';
-            } else {
-                drop.style.animation = 'drip 1.5s infinite';
-            }
-        }
-    </script>
 </body>
 </html>
