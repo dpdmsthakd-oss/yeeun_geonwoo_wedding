@@ -1,41 +1,68 @@
-# yeeun_geonwoo_wedding
-2026년 10월 3일 예은♡건우 결혼합니다.
-# 💌 Wedding Invitation: yeeun & geonwoo
+# 💌 Wedding Invitation
 
-> **Status: 💍 Marriage Quest in Progress...**
-> **"그리하여 당신은... 결혼식에 초대됐다!"**
+## 🕊️ 신랑 이건우 · 신부 최예은
+**2026년 10월 3일 토요일 오후 12시 30분** **한국기독교연합회관 3층**
 
 ---
 
-## 📅 System Information
-* **Event:** 예은 ♡ 건우 결혼식
-* **Date:** 2026년 10월 3일 (토)
-* **Time:** 오후 12시 30분
-* **Location:** 한국기독교연합회관
+## 📸 Main Photo
+![Main_Photo](./images/main.jpg)  
+*(메인 사진을 images 폴더에 main.jpg로 넣어줘!)*
 
 ---
 
-## 👥 Special NPCs (Guest List)
-이번 퀘스트를 축하해주기 위해 특별한 분들이 함께합니다:
-
-* **Legendary:** 아서(RDR2), 사카이진(Ghost of Tsushima), 아츠(Ghost of Yotei), 에지오(Assassin's Creed)
-* **Cute & Friendly:** 한교동, 나몰빼미, 잔망루피
-* **Special Sorcerers:** 옷코츠, 후시구로, 고죠 사토루, 스쿠나, 나나미 켄토
-* **Investigation Corps:** 한지, 리바이
-* **Akatsuki:** 이타치 및 멤버 전원
+## ✉️ 웰컴 문구
+함께 맞는 열 번째 가을,  
+저희 두 사람이 사랑과 신뢰로 하나가 되려 합니다.  
+귀한 걸음 하시어 저희의 시작을 축복해 주시면  
+더없는 기쁨으로 간직하겠습니다.
 
 ---
 
-## 📍 Navigation
-* **Address:** 서울특별시 종로구 김상옥로 30
-* **Map Link:** [네이버 지도에서 보기](https://map.naver.com/) *(여기에 실제 지도 링크를 넣으면 좋아!)*
+## 📅 달력 (October 2026)
+| Sun | Mon | Tue | Wed | Thu | Fri | Sat |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| | | | | 1 | 2 | **3** |
+| 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+| 11 | 12 | 13 | 14 | 15 | 16 | 17 |
+| 18 | 19 | 20 | 21 | 22 | 23 | 24 |
+| 25 | 26 | 27 | 28 | 29 | 30 | 31 |
 
 ---
 
-## ⚔️ Player Response
-이 퀘스트를 수락하시겠습니까?
-
-- [x] **수락한다 (Accept)**
-- [x] **기쁘게 수락한다 (Accept with Joy)**
+## 🖼️ 이미지 갤러리 (3x3)
+| | | |
+| :---: | :---: | :---: |
+| ![1](./images/1.jpg) | ![2](./images/2.jpg) | ![3](./images/3.jpg) |
+| ![4](./images/4.jpg) | ![5](./images/5.jpg) | ![6](./images/6.jpg) |
+| ![7](./images/7.jpg) | ![8](./images/8.jpg) | ![9](./images/9.jpg) |
 
 ---
+
+## 📍 결혼식장 장소
+**한국기독교연합회관**
+* **주소:** 서울특별시 종로구 김상옥로 30
+* **안내:** 지하철 1호선 종로5가역 2번 출구 도보 5분
+* [네이버 지도 보기](https://naver.me/xxx) | [카카오맵 보기](https://kko.to/xxx)
+
+![Map](./images/map.png)
+
+---
+
+## 💳 마음 전하실 곳
+축하의 마음을 담아 보내주시는 정성을 소중히 간직하겠습니다.
+
+### **신랑측**
+* 부 이OO / 모 박OO
+* **계좌:** 신한은행 110-XXX-XXXXXX (이건우)
+* [카카오페이 송금](https://qr.kakao.com/...)
+
+### **신부측**
+* 부 최OO / 모 김OO
+* **계좌:** 국민은행 XXXX-XXXX-XXXX (최예은)
+* [카카오페이 송금](https://qr.kakao.com/...)
+
+---
+
+## 💬 카카오톡 공유하기
+[카카오톡으로 이 청첩장 전달하기](https://t.me/...)
