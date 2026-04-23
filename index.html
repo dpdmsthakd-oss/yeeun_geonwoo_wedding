@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta property="og:title" content="건우 ♥ 예은 결혼합니다">
+    <meta property="og:description" content="2026. 10. 03. 토요일 오후 12:30">
+    <meta property="og:image" content="./main.jpg"> <meta property="og:type" content="website">
+    
     <title>건우♥예은 결혼합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -13,7 +18,6 @@
         body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: #fff; }
         .container { max-width: 480px; margin: 0 auto; position: relative; box-shadow: 0 0 30px rgba(255, 182, 193, 0.2); }
         
-        /* 헤더: 메인 사진 위 글자 최소화 */
         .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; background: transparent; }
         .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: -1; }
         .header-text-box { padding-bottom: 60px; text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.6); }
@@ -29,7 +33,6 @@
         .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-pink); margin-bottom: 40px; font-weight: 700; }
         .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; border-top: 1px solid #ffebee; padding-top: 40px; }
 
-        /* ✅ 수정: D-DAY 스타일 (갤러리와 동일한 폰트/스타일) */
         .d-day-section { padding-top: 40px; margin-bottom: -30px; }
         .d-day-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-pink); letter-spacing: 3px; font-weight: 700; margin-bottom: 10px; }
         .d-day-count { font-size: 1.2rem; color: #444; font-weight: 700; }
@@ -60,7 +63,7 @@
         .btn-action { margin: 10px auto; padding: 14px 0; width: 85%; display: block; background: #fff; border: 1.5px solid var(--main-pink); border-radius: 50px; color: var(--deep-pink); font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; text-align: center; }
 
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: white; width: 85%; max-width: 400px; border-radius: 25px; padding: 30px 20px; position: relative; }
+        .modal-content { background: white; width: 85%; max-width: 400px; border-radius: 25px; padding: 35px 20px; position: relative; }
         .modal-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-pink); margin-bottom: 25px; font-weight: 700; text-align: center; }
         .contact-group { margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #f9f9f9; }
         .contact-row { display: flex; justify-content: space-evenly; align-items: center; gap: 20px; }
@@ -196,14 +199,11 @@
                 <div class="transport-info">
                     <div class="transport-title">🚇 지하철 안내</div>
                     <div class="transport-detail"><b>1호선 종로5가역</b> 하차 후 <b>2번 출구</b>에서 도보 5분 거리</div>
-                    <div class="transport-title">🚌 버스 안내</div>
-                    <div class="transport-detail"><b>종로5가.효제초등학교 [01-025]</b><br>간선: 100, 102, 104, 106, 107, 108, 140, 150, 160, 273 / 지선: 7025<br><br><b>종로5가.광장시장 [01-020]</b><br>간선: 101, 103, 201, 260, 262, 270, 271A, 271B, 370, 720, 721, N15, N26, N62 / 지선: 7212 / 좌석: 9301</div>
                     <div class="transport-title">🚗 주차 및 연락처</div>
                     <div class="transport-detail">회관 내 <b>주차 무료</b> 이용 가능<br>문의: 02-708-4040, 4888</div>
                 </div>
                 <button class="btn-action" style="background:var(--deep-pink); color:#fff; border:none; margin-top:40px;" onclick="openModal('account-modal')">마음 전하실 곳</button>
             </div>
-            <p style="text-align:center; padding:40px 0; color:#dbb2b9; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
         </div>
     </div>
 
@@ -217,8 +217,7 @@
             const now = new Date().getTime();
             const diff = weddingDate - now;
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const display = days > 0 ? `우리가 함께할 날까지 ${days}일` : (days === 0 ? "오늘이 바로 그날입니다! ❤️" : "행복하게 잘 살겠습니다!");
-            document.getElementById("countdown").innerText = display;
+            document.getElementById("countdown").innerText = days > 0 ? `우리가 함께할 날까지 ${days}일` : "오늘이 바로 그날입니다! ❤️";
         }
         updateCountdown();
         const bgm = document.getElementById('bgm');
