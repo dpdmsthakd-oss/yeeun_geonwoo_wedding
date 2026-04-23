@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="건우 ♥ 예은 결혼합니다">
-    <meta property="og:description" content="2026. 10. 03. 토요일 오후 12:30">
+    <meta property="og:description" content="2026. 10. 03. 토요일 오후 12:30 한국기독교연합회관">
     <meta property="og:image" content="./main.jpg">
     <title>건우♥예은 결혼합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
@@ -15,21 +15,19 @@
         * { box-sizing: border-box; }
         .fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(135deg, #fefae0 0%, #faedcd 100%); }
         
-        /* 🍂 낙엽 효과 (6개 정예화) */
+        /* 🍂 낙엽 효과 */
         .snowflakes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; pointer-events: none; }
         .snowflake { color: #d4a373; font-size: 1.3em; position: fixed; top: -10%; user-select: none; animation: snowflakes-fall 12s linear infinite, snowflakes-shake 4s ease-in-out infinite; opacity: 0.8; }
         @keyframes snowflakes-fall { 0% { top: -10%; } 100% { top: 100%; } }
         @keyframes snowflakes-shake { 0%, 100% { transform: translateX(0) rotate(0deg); } 50% { transform: translateX(50px) rotate(30deg); } }
         .snowflake:nth-of-type(0){left:10%;animation-delay:0s} .snowflake:nth-of-type(1){left:35%;animation-delay:2s} .snowflake:nth-of-type(2){left:55%;animation-delay:4s}
-        .snowflake:nth-of-type(3){left:85%;animation-delay:6s} .snowflake:nth-of-type(4){left:20%;animation-delay:8s; color:#bc6c25;} .snowflake:nth-of-type(5){left:75%;animation-delay:10s; color:#bc6c25;}
+        .snowflake:nth-of-type(3){left:85%;animation-delay:6s} .snowflake:nth-of-type(4){left:20%;animation-delay:8s; color: #bc6c25;} .snowflake:nth-of-type(5){left:75%;animation-delay:10s; color: #bc6c25;}
 
         body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: #fff; }
         .container { max-width: 480px; margin: 0 auto; position: relative; box-shadow: 0 0 30px rgba(188, 108, 37, 0.15); background: #fff; }
         .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; }
         .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: 1; }
         .header-text-box { position: relative; z-index: 2; padding-bottom: 60px; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
-        .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; letter-spacing: 5px; margin-bottom: 15px; }
-        .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.7rem; margin: 0 0 12px 0; }
 
         .white-section { background-color: #ffffff; background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png"); position: relative; z-index: 5; }
         .section { padding: 80px 20px; text-align: center; }
@@ -39,16 +37,18 @@
         .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; border-top: 1px solid #e9edc9; padding-top: 40px; }
         
         .d-day-section { padding-top: 40px; margin-bottom: -30px; }
-        .d-day-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-brown); letter-spacing: 3px; font-weight: 700; margin-bottom: 10px; }
+        .d-day-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-brown); letter-spacing: 3px; font-weight: 700; }
         
+        /* ❤️ 달력 숫자 3 보이도록 수정 */
         .calendar-section { background-color: var(--soft-yellow); padding: 60px 10px; border-radius: 30px; margin: 0 15px; }
         .calendar-month { font-size: 2.2rem; color: var(--deep-brown); margin-bottom: 25px; font-family: 'Nanum Myeongjo', serif; font-weight: 700; }
         .calendar-container { max-width: 320px; margin: 0 auto; background: #fff; padding: 25px 10px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px 0; }
-        .calendar-grid div { font-size: 0.95rem; height: 35px; display: flex; align-items: center; justify-content: center; }
+        .calendar-grid div { font-size: 0.95rem; height: 35px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .day-label { font-weight: 700; color: #a3a380; font-size: 0.85rem !important; }
         .sun { color: #bc6c25; }
-        .wedding-heart { color: var(--heart-red) !important; font-size: 1.2rem; position: relative; }
-        .wedding-heart::after { content: ''; position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); font-size: 0.65rem; color: var(--heart-red); font-weight: 700; }
+        .wedding-heart { color: white !important; font-weight: 700; z-index: 2; }
+        .wedding-heart::before { content: '♥'; position: absolute; font-size: 2.2rem; color: var(--heart-red); z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.8; }
         
         .mainGallerySwiper { width: 100%; height: 450px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: pointer; }
         .mainGallerySwiper img { width: 100%; height: 100%; object-fit: cover; }
@@ -56,8 +56,6 @@
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 20000; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 92%; max-width: 420px; border-radius: 25px; padding: 30px 15px; position: relative; }
         .btn-action { margin: 10px auto; padding: 14px 0; width: 85%; display: block; background: #fff; border: 1.5px solid var(--main-gold); border-radius: 50px; color: var(--deep-brown); font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; text-align: center; }
-        
-        .contact-row { display: flex; justify-content: space-around; padding: 12px 0; border-bottom: 1px solid #f2f2f2; }
         .account-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 5px; border-bottom: 1px solid #f2f2f2; }
         .acc-info-text { font-size: 0.82rem; color: #444; flex: 1; text-align: left; }
         .btn-copy { background: #fefae0; border: 1px solid var(--main-gold); padding: 5px 8px; border-radius: 20px; font-size: 0.72rem; color: var(--deep-brown); cursor: pointer; }
@@ -83,36 +81,16 @@
         <span style="position:absolute; top:20px; right:20px; color:white; font-size:40px; cursor:pointer; z-index:21000;" onclick="closeSlider()">&times;</span>
         <div class="swiper fullGallerySwiper" style="width:100%; height:80vh;">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="./1.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./2.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./3.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./4.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./5.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./6.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./7.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./8.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./9.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./10.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./11.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./12.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./13.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./14.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./15.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./16.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./17.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./18.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./19.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./20.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./21.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./22.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./23.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./24.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./25.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./26.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./27.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./28.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./29.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
-                <div class="swiper-slide"><img src="./30.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./1.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./2.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./3.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./4.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./5.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./6.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./7.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./8.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./9.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./10.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./11.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./12.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./13.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./14.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./15.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./16.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./17.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./18.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./19.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./20.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./21.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./22.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./23.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./24.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./25.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./26.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./27.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
+                <div class="swiper-slide"><img src="./28.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./29.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div><div class="swiper-slide"><img src="./30.jpg" style="max-width:100%; max-height:100%; object-fit:contain;"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -125,12 +103,34 @@
             <div class="section" data-aos="fade-up">
                 <div class="wedding-invitation-title">Wedding Invitation</div>
                 <div class="bible-verse">“우리가 사랑함은 그가 먼저<br>우리를 사랑하셨음이라”</div>
-                <p class="invitation-text">태어나 처음 배운 기도가<br>삶의 문장이 된 두 사람이 만났습니다.<br><br>오랜 시간<br>각자의 자리에서 다져온<br>믿음의 뿌리는<br>이미 오래전부터 맞닿아 있던<br>든든한 인연의 가지가 되어<br>비로소 하나의 꽃을 피웠습니다.<br><br>이제 주님이 허락하신 평생의 길을<br>나란히 걸으려 합니다.<br><br>저희의 시작을 축복하는 예배의 자리에 오셔서<br>함께 기쁨의 증인이 되어주세요.</p>
+                <p class="invitation-text">
+                    태어나 처음 배운 기도가<br>삶의 문장이 된 두 사람이 만났습니다.<br><br>
+                    오랜 시간<br>각자의 자리에서 다져온<br>믿음의 뿌리는<br>이미 오래전부터 맞닿아 있던<br>든든한 인연의 가지가 되어<br>비로소 하나의 꽃을 피웠습니다.<br><br>
+                    이제 주님이 허락하신 평생의 길을<br>나란히 걸으려 합니다.<br><br>
+                    저희의 시작을 축복하는 예배의 자리에 오셔서<br>함께 기쁨의 증인이 되어주세요.
+                </p>
                 <div class="family-info">이도행 · 마선영의 차남 <b>이건우</b><br>최동식 · 정설미의 장녀 <b>최예은</b></div>
                 <button class="btn-action" style="margin-top:40px;" onclick="openModal('contact-modal')">혼주에게 연락하기</button>
             </div>
 
             <div class="section d-day-section" data-aos="fade-up"><div class="d-day-title">D-DAY</div><div id="countdown" style="font-weight:700; font-size:1.2rem; color:#444;"></div></div>
+
+            <div class="section" data-aos="fade-up">
+                <div class="calendar-section">
+                    <div class="calendar-month">10월</div>
+                    <div class="calendar-container">
+                        <div class="calendar-grid">
+                            <div class="day-label sun">일</div><div class="day-label">월</div><div class="day-label">화</div><div class="day-label">수</div><div class="day-label">목</div><div class="day-label">금</div><div class="day-label">토</div>
+                            <div></div><div></div><div></div><div></div><div>1</div><div>2</div>
+                            <div class="wedding-heart">3</div>
+                            <div class="sun">4</div><div>5</div><div>6</div><div>7</div><div>8</div><div class="sun">9</div><div>10</div>
+                            <div class="sun">11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div>
+                            <div class="sun">18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
+                            <div class="sun">25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="section" data-aos="fade-up">
                 <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-brown); letter-spacing:3px; margin-bottom:30px;">GALLERY</h3>
@@ -148,33 +148,23 @@
                 <p style="margin-top:15px; font-size:0.85rem; color:var(--deep-brown); font-weight:700;">옆으로 밀어서 감상하시거나 클릭해 크게 보세요.</p>
             </div>
 
-            <div class="section" data-aos="fade-up">
-                <div class="calendar-section">
-                    <div class="calendar-month">10월</div>
-                    <div class="calendar-container">
-                        <div class="calendar-grid">
-                            <div class="day-label sun">일</div><div class="day-label">월</div><div class="day-label">화</div><div class="day-label">수</div><div class="day-label">목</div><div class="day-label">금</div><div class="day-label">토</div>
-                            <div></div><div></div><div></div><div></div><div>1</div><div>2</div><div class="wedding-heart">♥</div>
-                            <div class="sun">4</div><div>5</div><div>6</div><div>7</div><div>8</div><div class="sun">9</div><div>10</div>
-                            <div class="sun">11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div>
-                            <div class="sun">18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
-                            <div class="sun">25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section" data-aos="fade-up" style="background:rgba(254,250,224,0.3); border-radius:50px 50px 0 0;">
+            <div class="section" data-aos="fade-up" style="background:rgba(254,250,224,0.3); border-radius: 50px 50px 0 0;">
                 <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-brown); letter-spacing:3px; margin-bottom:30px;">LOCATION</h3>
                 <p style="font-weight:700;">한국기독교연합회관 3층</p>
+                <p style="font-size:0.85rem; color:#666; margin-bottom:10px;">서울특별시 종로구 김상옥로 30</p>
+                <p style="font-size:0.95rem; color:var(--deep-brown); font-weight:700; margin-bottom:20px;">🍴 연회장은 지하 1층에 마련되어 있습니다.</p>
+                
                 <div class="map-img-container"><img src="./map.jpg" alt="약도"></div>
+                
                 <div style="display:flex; gap:10px; justify-content:center; margin-bottom:30px;">
                     <a href="https://naver.me/FzSifb7D" target="_blank" class="btn-action" style="width:auto; padding:10px 20px; font-size:0.85rem; border-radius:15px;">네이버 지도</a>
                     <a href="https://place.map.kakao.com/9742385" target="_blank" class="btn-action" style="width:auto; padding:10px 20px; font-size:0.85rem; border-radius:15px;">카카오맵</a>
                 </div>
+
                 <div class="transport-info">
                     <div class="transport-title">🚇 지하철 안내</div><div class="transport-detail"><b>1호선 종로5가역 2번 출구</b>에서 도보 5분 거리</div>
-                    <div class="transport-title">🚌 버스 안내</div><div class="transport-detail">간선: 100, 102, 104, 106, 107, 108, 140, 150, 160, 273 / 지선: 7025<br>광장시장행: 101, 103, 201, 260, 262, 270, 271A, 271B, 370, 720, 721 / 좌석: 9301</div>
+                    <div class="transport-title">🚌 버스 안내</div><div class="transport-detail"><b>종로5가.효제초등학교 [01-025]</b><br>간선: 100, 102, 104, 106, 107, 108, 140, 150, 160, 273 / 지선: 7025<br><br><b>종로5가.광장시장 [01-020]</b><br>간선: 101, 103, 201, 260, 262, 270, 271A, 271B, 370, 720, 721, N15, N26, N62 / 지선: 7212 / 좌석: 9301</div>
+                    <div class="transport-title">🚗 주차 안내</div><div class="transport-detail">회관 내 <b>주차 무료</b> 이용 가능</div>
                 </div>
                 <button class="btn-action" style="background:var(--deep-brown); color:#fff; border:none; margin-top:40px;" onclick="openModal('account-modal')">마음 전하실 곳</button>
             </div>
@@ -185,9 +175,9 @@
     <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-title" style="color:var(--deep-brown); font-weight:700; text-align:center; margin-bottom:20px;">혼주에게 연락하기</div>
-            <div class="contact-row"><span>부 이도행 <a href="tel:010-0000-0000">📞</a></span><span>모 마선영 <a href="tel:010-0000-0000">📞</a></span></div>
-            <div class="contact-row"><span>부 최동식 <a href="tel:010-0000-0000">📞</a></span><span>모 정설미 <a href="tel:010-0000-0000">📞</a></span></div>
-            <div class="contact-row"><span>신랑 이건우 <a href="tel:010-0000-0000">📞</a></span><span>신부 최예은 <a href="tel:010-0000-0000">📞</a></span></div>
+            <div class="contact-row"><span>부 이도행 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span><span>모 마선영 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span></div>
+            <div class="contact-row"><span>부 최동식 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span><span>모 정설미 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span></div>
+            <div class="contact-row"><span>신랑 이건우 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span><span>신부 최예은 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span></div>
             <button onclick="closeModal('contact-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:20px; cursor:pointer;">닫기</button>
         </div>
     </div>
@@ -213,6 +203,7 @@
         AOS.init();
         const mainSwiper = new Swiper(".mainGallerySwiper", { loop: true, pagination: { el: ".swiper-pagination", clickable: true }, autoplay: { delay: 4000, disableOnInteraction: false } });
         const fullSwiper = new Swiper(".fullGallerySwiper", { loop: true, pagination: { el: ".swiper-pagination", clickable: true } });
+        
         function updateCountdown() {
             const d = new Date("2026-10-03").setHours(0,0,0,0);
             const now = new Date().setHours(0,0,0,0);
@@ -229,6 +220,7 @@
         function closeSlider() { document.getElementById('slider-modal').style.display='none'; document.body.style.overflow='auto'; }
         function openModal(id) { document.getElementById(id).style.display='flex'; document.body.style.overflow='hidden'; }
         function closeModal(id) { document.getElementById(id).style.display='none'; document.body.style.overflow='auto'; }
+        // ✅ 복사 팝업 알림 로직
         function copyText(txt) {
             const c = txt.replace(/[^0-9]/g, "");
             const t = document.createElement('textarea'); t.value = c; document.body.appendChild(t); t.select();
