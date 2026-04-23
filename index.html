@@ -6,7 +6,8 @@
     
     <meta property="og:title" content="건우 ♥ 예은 결혼합니다">
     <meta property="og:description" content="2026. 10. 03. 토요일 오후 12:30">
-    <meta property="og:image" content="./main.jpg"> <meta property="og:type" content="website">
+    <meta property="og:image" content="./main.jpg">
+    <meta property="og:type" content="website">
     
     <title>건우♥예은 결혼합니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
@@ -15,6 +16,23 @@
     <style>
         :root { --main-pink: #ffb6c1; --soft-pink: #fff0f3; --deep-pink: #ff8fa3; --text-dark: #333; }
         .fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%); }
+        
+        /* 💧 물방울(꽃잎) 효과 */
+        .snowflakes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .snowflake { color: #fff; font-size: 1.2em; text-shadow: 0 0 5px rgba(255,182,193,0.4); position: fixed; top: -10%; z-index: -1; user-select: none; cursor: default; animation-name: snowflakes-fall, snowflakes-shake; animation-duration: 10s, 3s; animation-timing-function: linear, ease-in-out; animation-iteration-count: infinite, infinite; }
+        @keyframes snowflakes-fall { 0% { top: -10%; } 100% { top: 100%; } }
+        @keyframes snowflakes-shake { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(80px); } }
+        .snowflake:nth-of-type(0){left:1%;animation-delay:0s,0s}
+        .snowflake:nth-of-type(1){left:10%;animation-delay:1s,1s}
+        .snowflake:nth-of-type(2){left:20%;animation-delay:6s,.5s}
+        .snowflake:nth-of-type(3){left:30%;animation-delay:4s,2s}
+        .snowflake:nth-of-type(4){left:40%;animation-delay:2s,2s}
+        .snowflake:nth-of-type(5){left:50%;animation-delay:8s,3s}
+        .snowflake:nth-of-type(6){left:60%;animation-delay:6s,2s}
+        .snowflake:nth-of-type(7){left:70%;animation-delay:2.5s,1s}
+        .snowflake:nth-of-type(8){left:80%;animation-delay:1s,0s}
+        .snowflake:nth-of-type(9){left:90%;animation-delay:3s,1.5s}
+
         body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: #fff; }
         .container { max-width: 480px; margin: 0 auto; position: relative; box-shadow: 0 0 30px rgba(255, 182, 193, 0.2); }
         
@@ -27,7 +45,6 @@
 
         .white-section { background: rgba(255, 255, 255, 0.96); }
         .section { padding: 80px 20px; text-align: center; }
-
         .wedding-invitation-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.25rem; color: var(--deep-pink); font-style: italic; margin-bottom: 15px; letter-spacing: 1px; }
         .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.8; color: #222; margin: 0 auto 50px; word-break: keep-all; text-align: center; max-width: 95%; font-weight: 400; }
         .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-pink); margin-bottom: 40px; font-weight: 700; }
@@ -65,8 +82,13 @@
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 85%; max-width: 400px; border-radius: 25px; padding: 35px 20px; position: relative; }
         .modal-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-pink); margin-bottom: 25px; font-weight: 700; text-align: center; }
+        
+        /* 연락처 간격 넓게 복구 */
         .contact-group { margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #f9f9f9; }
+        .contact-group:last-of-type { border-bottom: none; margin-bottom: 0; }
         .contact-row { display: flex; justify-content: space-evenly; align-items: center; gap: 20px; }
+        .contact-row span { font-size: 1rem; color: #444; }
+
         .acc-group-title { font-size: 1rem; color: var(--deep-pink); font-weight: 700; margin: 20px 0 10px; text-align: left; padding-left: 10px; border-left: 3px solid var(--main-pink); }
         .account-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f2f2f2; }
         .btn-copy { background: #fff1f5; border: 1px solid var(--main-pink); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; color: var(--deep-pink); cursor: pointer; }
@@ -76,6 +98,14 @@
 </head>
 <body>
     <div class="fixed-bg"></div>
+
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">🌸</div><div class="snowflake">🌸</div><div class="snowflake">🌸</div>
+        <div class="snowflake">🌸</div><div class="snowflake">🌸</div><div class="snowflake">🌸</div>
+        <div class="snowflake">🌸</div><div class="snowflake">🌸</div><div class="snowflake">🌸</div>
+        <div class="snowflake">🌸</div>
+    </div>
+
     <div class="bgm-btn" onclick="toggleBGM()" id="bgmBtn">🔇</div>
     <audio id="bgm" src="./bgm.mp3" loop></audio>
 
@@ -120,13 +150,13 @@
         <div class="modal-content" onclick="event.stopPropagation()" style="max-height:85vh; overflow-y:auto;">
             <div class="modal-title">마음 전하실 곳</div>
             <div class="acc-group-title">신랑측</div>
-            <div class="account-row"><div class="acc-info-text">부 이도행<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">모 마선영<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">신랑 이건우<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><span>부 이도행 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><span>모 마선영 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><span>신랑 이건우 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
             <div class="acc-group-title">신부측</div>
-            <div class="account-row"><div class="acc-info-text">부 최동식<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">모 정설미<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">신부 최예은<br>국민 1234-02-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><span>부 최동식 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><span>모 정설미 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><span>신부 최예은 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
             <button onclick="closeModal('account-modal')" style="margin-top:20px; border:none; background:none; color:#bbb; cursor:pointer; width:100%;">닫기</button>
         </div>
     </div>
@@ -191,7 +221,7 @@
                 <p style="font-weight:700;">한국기독교연합회관 3층</p>
                 <p style="font-size:0.9rem; color:#888; margin-bottom:25px;">서울특별시 종로구 김상옥로 30</p>
                 <p style="font-size:0.95rem; color:var(--deep-pink); font-weight:700; margin-bottom:20px;">🍴 연회장은 지하 1층에 마련되어 있습니다.</p>
-                <div class="map-img-container"><img src="./map.jpg"></div>
+                <div class="map-img-container"><img src="./map.jpg" alt="약도"></div>
                 <div style="display:flex; gap:15px; justify-content:center; margin-bottom:40px;">
                     <a href="https://naver.me/FzSifb7D" target="_blank" class="btn-action" style="width:auto; padding:12px 25px; border-radius:30px; margin:0;">네이버 지도</a>
                     <a href="https://place.map.kakao.com/9742385" target="_blank" class="btn-action" style="width:auto; padding:12px 25px; border-radius:30px; margin:0;">카카오맵</a>
@@ -199,11 +229,17 @@
                 <div class="transport-info">
                     <div class="transport-title">🚇 지하철 안내</div>
                     <div class="transport-detail"><b>1호선 종로5가역</b> 하차 후 <b>2번 출구</b>에서 도보 5분 거리</div>
+                    <div class="transport-title">🚌 버스 안내</div>
+                    <div class="transport-detail">
+                        <b>종로5가.효제초등학교 [01-025]</b><br>간선: 100, 102, 104, 106, 107, 108, 140, 150, 160, 273 / 지선: 7025<br><br>
+                        <b>종로5가.광장시장 [01-020]</b><br>간선: 101, 103, 201, 260, 262, 270, 271A, 271B, 370, 720, 721, N15, N26, N62 / 지선: 7212 / 좌석: 9301
+                    </div>
                     <div class="transport-title">🚗 주차 및 연락처</div>
                     <div class="transport-detail">회관 내 <b>주차 무료</b> 이용 가능<br>문의: 02-708-4040, 4888</div>
                 </div>
                 <button class="btn-action" style="background:var(--deep-pink); color:#fff; border:none; margin-top:40px;" onclick="openModal('account-modal')">마음 전하실 곳</button>
             </div>
+            <p style="text-align:center; padding:40px 0; color:#dbb2b9; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
         </div>
     </div>
 
