@@ -23,12 +23,11 @@
         
         .fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(135deg, #fefae0 0%, #faedcd 100%); }
         
-        /* 🍂 낙엽 효과 (개수 조절 및 속도 완화) */
+        /* 🍂 낙엽 효과 (개수 조절: 6개) */
         .snowflakes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; pointer-events: none; }
         .snowflake { color: #d4a373; font-size: 1.3em; position: fixed; top: -10%; user-select: none; cursor: default; animation: snowflakes-fall 12s linear infinite, snowflakes-shake 4s ease-in-out infinite; }
         @keyframes snowflakes-fall { 0% { top: -10%; } 100% { top: 100%; } }
         @keyframes snowflakes-shake { 0%, 100% { transform: translateX(0) rotate(0deg); } 50% { transform: translateX(50px) rotate(30deg); } }
-        /* 낙엽 개수를 줄이기 위해 간격 넓게 배치 */
         .snowflake:nth-of-type(0){left:10%;animation-delay:0s,0s}
         .snowflake:nth-of-type(1){left:30%;animation-delay:3s,1s}
         .snowflake:nth-of-type(2){left:55%;animation-delay:6s,2s}
@@ -48,10 +47,11 @@
         .white-section { background-color: #ffffff; background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png"); position: relative; z-index: 5; }
         .section { padding: 80px 20px; text-align: center; }
         .wedding-invitation-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.25rem; color: var(--deep-brown); font-style: italic; margin-bottom: 15px; }
-        .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.8; color: #222; margin: 0 auto 50px; }
+        .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.8; color: #222; margin: 0 auto 50px; word-break: keep-all; }
+        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-brown); margin-bottom: 40px; font-weight: 700; }
         .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; border-top: 1px solid #e9edc9; padding-top: 40px; }
 
-        /* ✅ 달력 섹션 - 2026년 10월 완벽 교정 */
+        /* 달력 - 2026년 10월 완벽 교정 */
         .calendar-section { background-color: var(--soft-yellow); padding: 60px 10px; border-radius: 30px; margin: 0 15px; }
         .calendar-month { font-size: 2rem; color: var(--deep-brown); margin-bottom: 25px; font-family: 'Nanum Myeongjo', serif; font-weight: 700; }
         .calendar-container { max-width: 320px; margin: 0 auto; background: #fff; padding: 25px 10px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
@@ -70,7 +70,6 @@
 
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 20000; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 92%; max-width: 420px; border-radius: 25px; padding: 30px 10px; position: relative; }
-        /* ✅ 계좌번호 한 줄 정렬 최적화 */
         .account-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 8px; border-bottom: 1px solid #f2f2f2; }
         .acc-info-text { font-size: 0.8rem; color: #444; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.5px; }
         .btn-copy { background: #fefae0; border: 1px solid var(--main-gold); padding: 4px 8px; border-radius: 20px; font-size: 0.7rem; color: var(--deep-brown); cursor: pointer; flex-shrink: 0; }
@@ -98,6 +97,7 @@
         <div class="white-section">
             <div class="section" data-aos="fade-up">
                 <div class="wedding-invitation-title">Wedding Invitation</div>
+                <div class="bible-verse">“우리가 사랑함은 그가 먼저<br>우리를 사랑하셨음이라”</div>
                 <p class="invitation-text">
                     태어나 처음 배운 기도가<br>삶의 문장이 된 두 사람이 만났습니다.<br><br>
                     오랜 시간<br>각자의 자리에서 다져온<br>믿음의 뿌리는<br>이미 오래전부터 맞닿아 있던<br>든든한 인연의 가지가 되어<br>비로소 하나의 꽃을 피웠습니다.<br><br>
