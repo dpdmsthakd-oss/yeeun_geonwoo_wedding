@@ -14,148 +14,124 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        :root { --main-pink: #ffb6c1; --soft-pink: #fff0f3; --deep-pink: #ff8fa3; --text-dark: #333; }
-        .fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(135deg, #fff1f5 0%, #ffffff 50%, #fff1f5 100%); }
+        :root { 
+            --main-gold: #d4a373; /* 머스터드 골드 */
+            --soft-yellow: #fefae0; /* 연한 아이보리 노랑 */
+            --deep-brown: #bc6c25; /* 짙은 가을 갈색 */
+            --text-dark: #283618; /* 깊은 가을 숲색 */
+        }
         
-        /* 🌸 ✅ 수정: 꽃잎이 모든 것 위로 오도록 설정 */
+        .fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(135deg, #fefae0 0%, #faedcd 100%); }
+        
+        /* 🍂 낙엽(단풍/은행) 효과 (가장 위 레이어) */
         .snowflakes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; pointer-events: none; }
-        .snowflake { color: #fff; font-size: 1.2em; text-shadow: 0 0 5px rgba(255,182,193,0.4); position: fixed; top: -10%; user-select: none; cursor: default; animation-name: snowflakes-fall, snowflakes-shake; animation-duration: 10s, 3s; animation-timing-function: linear, ease-in-out; animation-iteration-count: infinite, infinite; }
+        .snowflake { color: #d4a373; font-size: 1.5em; position: fixed; top: -10%; user-select: none; cursor: default; animation: snowflakes-fall 10s linear infinite, snowflakes-shake 3s ease-in-out infinite; }
         @keyframes snowflakes-fall { 0% { top: -10%; } 100% { top: 100%; } }
-        @keyframes snowflakes-shake { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(80px); } }
-        .snowflake:nth-of-type(0){left:1%;animation-delay:0s,0s}
-        .snowflake:nth-of-type(1){left:10%;animation-delay:1s,1s}
-        .snowflake:nth-of-type(2){left:20%;animation-delay:6s,.5s}
-        .snowflake:nth-of-type(3){left:30%;animation-delay:4s,2s}
-        .snowflake:nth-of-type(4){left:40%;animation-delay:2s,2s}
-        .snowflake:nth-of-type(5){left:50%;animation-delay:8s,3s}
-        .snowflake:nth-of-type(6){left:60%;animation-delay:6s,2s}
-        .snowflake:nth-of-type(7){left:70%;animation-delay:2.5s,1s}
-        .snowflake:nth-of-type(8){left:80%;animation-delay:1s,0s}
-        .snowflake:nth-of-type(9){left:90%;animation-delay:3s,1.5s}
+        @keyframes snowflakes-shake { 0%, 100% { transform: translateX(0) rotate(0deg); } 50% { transform: translateX(80px) rotate(45deg); } }
+        .snowflake:nth-of-type(odd) { color: #bc6c25; }
+        .snowflake:nth-of-type(0){left:1%;animation-delay:0s,0s} .snowflake:nth-of-type(1){left:10%;animation-delay:1s,1s}
+        .snowflake:nth-of-type(2){left:20%;animation-delay:6s,.5s} .snowflake:nth-of-type(3){left:30%;animation-delay:4s,2s}
+        .snowflake:nth-of-type(4){left:40%;animation-delay:2s,2s} .snowflake:nth-of-type(5){left:50%;animation-delay:8s,3s}
+        .snowflake:nth-of-type(6){left:60%;animation-delay:6s,2s} .snowflake:nth-of-type(7){left:70%;animation-delay:2.5s,1s}
+        .snowflake:nth-of-type(8){left:80%;animation-delay:1s,0s} .snowflake:nth-of-type(9){left:90%;animation-delay:3s,1.5s}
 
         body { font-family: 'Nanum Gothic', sans-serif; margin: 0; color: var(--text-dark); overflow-x: hidden; line-height: 1.8; background: #fff; }
-        .container { max-width: 480px; margin: 0 auto; position: relative; box-shadow: 0 0 30px rgba(255, 182, 193, 0.2); }
+        .container { max-width: 480px; margin: 0 auto; position: relative; box-shadow: 0 0 30px rgba(188, 108, 37, 0.15); background: #fff; }
         
-        .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; background: transparent; }
-        .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: -1; }
-        .header-text-box { padding-bottom: 60px; text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.6); }
+        /* 헤더 - 사진 중앙 정렬 및 여백 해결 */
+        .header { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: white; text-align: center; overflow: hidden; background: #000; }
+        .header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('./main.jpg'); background-size: cover; background-position: center; z-index: 1; }
+        .header-text-box { position: relative; z-index: 2; padding-bottom: 60px; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
         .header h1 { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; letter-spacing: 5px; font-weight: 700; margin-bottom: 15px; }
         .header h2 { font-family: 'Nanum Myeongjo', serif; font-size: 1.7rem; font-weight: 700; margin: 0 0 12px 0; }
-        .header p { font-size: 0.9rem; font-weight: 700; margin: 4px 0; color: #fff; }
 
-        .white-section { background: rgba(255, 255, 255, 0.96); }
+        /* 종이 질감 섹션 */
+        .white-section { 
+            background-color: #ffffff;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png"); /* 은은한 종이 질감 */
+            position: relative;
+            z-index: 5;
+        }
         .section { padding: 80px 20px; text-align: center; }
-        .wedding-invitation-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.25rem; color: var(--deep-pink); font-style: italic; margin-bottom: 15px; letter-spacing: 1px; }
-        .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.8; color: #222; margin: 0 auto 50px; word-break: keep-all; text-align: center; max-width: 95%; font-weight: 400; }
-        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-pink); margin-bottom: 40px; font-weight: 700; }
-        .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; border-top: 1px solid #ffebee; padding-top: 40px; }
+        .wedding-invitation-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.25rem; color: var(--deep-brown); font-style: italic; margin-bottom: 15px; }
+        .invitation-text { font-family: 'Nanum Myeongjo', serif; font-size: 1rem; line-height: 2.8; color: #222; margin: 0 auto 50px; word-break: keep-all; text-align: center; max-width: 95%; }
+        .bible-verse { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; color: var(--deep-brown); margin-bottom: 40px; font-weight: 700; }
+        .family-info { font-family: 'Nanum Myeongjo', serif; font-size: 1.05rem; line-height: 2.5; color: #444; border-top: 1px solid #e9edc9; padding-top: 40px; }
 
-        .d-day-section { padding-top: 40px; margin-bottom: -30px; }
-        .d-day-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-pink); letter-spacing: 3px; font-weight: 700; margin-bottom: 10px; }
-        .d-day-count { font-size: 1.2rem; color: #444; font-weight: 700; }
-
-        .calendar-section { background-color: var(--soft-pink); padding: 60px 20px; border-radius: 30px; margin: 0 15px; }
-        .calendar-month { font-size: 2.5rem; color: var(--deep-pink); margin-bottom: 25px; font-family: 'Nanum Myeongjo', serif; font-weight: 700; }
-        .calendar-container { max-width: 300px; margin: 0 auto; background: #fff; padding: 25px 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(255, 182, 193, 0.15); }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 0; }
-        .calendar-grid div { font-size: 0.9rem; height: 35px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .day-label { font-weight: 700; color: #ccabb0; font-size: 0.85rem !important; }
-        .sun { color: #ff8fa3; }
+        /* 달력 - 가을색 적용 */
+        .calendar-section { background-color: var(--soft-yellow); padding: 60px 20px; border-radius: 30px; margin: 0 15px; }
+        .calendar-month { font-size: 2.5rem; color: var(--deep-brown); margin-bottom: 25px; font-family: 'Nanum Myeongjo', serif; font-weight: 700; }
+        .calendar-container { max-width: 300px; margin: 0 auto; background: #fff; padding: 25px 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .day-label { font-weight: 700; color: #a3a380; font-size: 0.85rem !important; }
+        .sun { color: #bc6c25; }
         .wedding-day { font-weight: 700; color: #ff0000 !important; }
         .wedding-day::before { content: '❤️'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 0.9rem; z-index: 2; }
 
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 15px; }
-        .gallery div { aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; cursor: pointer; }
-        .gallery img { width: 100%; height: 100%; object-fit: cover; }
-        .slider-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 3000; justify-content: center; align-items: center; }
-        .swiper { width: 100%; height: 80vh; }
-        .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .close-slider { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; z-index: 3001; cursor: pointer; }
+        /* 갤러리 - 중앙 정렬 보강 */
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 15px; justify-content: center; }
+        .gallery div { aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; cursor: pointer; background: #eee; }
+        .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .transport-info { text-align: left; background: #fff; padding: 25px; border-radius: 20px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
-        .transport-title { font-weight: 700; color: var(--deep-pink); border-bottom: 2px solid var(--soft-pink); display: inline-block; margin-bottom: 10px; font-size: 0.95rem; }
-        .transport-detail { font-size: 0.85rem; line-height: 1.7; color: #555; margin-bottom: 20px; }
-        .map-img-container { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid #ffebee; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        /* 지도 및 버튼 */
+        .map-img-container { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid #e9edc9; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .map-img-container img { width: 100%; display: block; }
-        .btn-action { margin: 10px auto; padding: 14px 0; width: 85%; display: block; background: #fff; border: 1.5px solid var(--main-pink); border-radius: 50px; color: var(--deep-pink); font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; text-align: center; }
+        .btn-action { margin: 10px auto; padding: 14px 0; width: 85%; display: block; background: #fff; border: 1.5px solid var(--main-gold); border-radius: 50px; color: var(--deep-brown); font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; text-align: center; }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: white; width: 85%; max-width: 400px; border-radius: 25px; padding: 35px 20px; position: relative; }
-        .modal-title { font-family: 'Nanum Myeongjo', serif; font-size: 1.1rem; color: var(--deep-pink); margin-bottom: 25px; font-weight: 700; text-align: center; }
+        /* 모달 및 계좌번호 한 줄 정렬 */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 20000; justify-content: center; align-items: center; }
+        .modal-content { background: white; width: 90%; max-width: 420px; border-radius: 25px; padding: 30px 15px; position: relative; }
+        .acc-group-title { font-size: 1rem; color: var(--deep-brown); font-weight: 700; margin: 20px 0 10px; text-align: left; padding-left: 10px; border-left: 3px solid var(--main-gold); }
         
-        .contact-group { margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #f9f9f9; }
-        .contact-group:last-of-type { border-bottom: none; margin-bottom: 0; }
-        .contact-row { display: flex; justify-content: space-evenly; align-items: center; gap: 20px; }
-        .contact-row span { font-size: 1rem; color: #444; }
+        /* ✅ 계좌번호 한 줄 최적화 */
+        .account-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f2f2f2; gap: 5px; }
+        .acc-info-text { font-size: 0.82rem; text-align: left; line-height: 1.2; color: #444; white-space: nowrap; flex-shrink: 1; }
+        .btn-copy { background: #fefae0; border: 1px solid var(--main-gold); padding: 4px 8px; border-radius: 20px; font-size: 0.7rem; color: var(--deep-brown); cursor: pointer; flex-shrink: 0; }
 
-        .acc-group-title { font-size: 1rem; color: var(--deep-pink); font-weight: 700; margin: 20px 0 10px; text-align: left; padding-left: 10px; border-left: 3px solid var(--main-pink); }
-        .account-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f2f2f2; }
-        .btn-copy { background: #fff1f5; border: 1px solid var(--main-pink); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; color: var(--deep-pink); cursor: pointer; }
-
-        .bgm-btn { position: fixed; bottom: 30px; right: 20px; width: 45px; height: 45px; background: rgba(255, 255, 255, 0.8); border: 1px solid var(--main-pink); border-radius: 50%; z-index: 1000; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); font-size: 20px; }
+        .bgm-btn { position: fixed; bottom: 30px; right: 20px; width: 45px; height: 45px; background: rgba(255, 255, 255, 0.9); border: 1px solid var(--main-gold); border-radius: 50%; z-index: 15000; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); font-size: 20px; }
     </style>
 </head>
 <body>
     <div class="fixed-bg"></div>
 
     <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake">🌸</div><div class="snowflake">🌸</div><div class="snowflake">🌸</div>
-        <div class="snowflake">🌸</div><div class="snowflake">🌸</div><div class="snowflake">🌸</div>
-        <div class="snowflake">🌸</div><div class="snowflake">🌸</div><div class="snowflake">🌸</div>
-        <div class="snowflake">🌸</div>
+        <div class="snowflake">🍁</div><div class="snowflake">🍂</div><div class="snowflake">🍁</div>
+        <div class="snowflake">🍂</div><div class="snowflake">🍁</div><div class="snowflake">🍂</div>
+        <div class="snowflake">🍁</div><div class="snowflake">🍂</div><div class="snowflake">🍁</div>
+        <div class="snowflake">🍂</div>
     </div>
 
     <div class="bgm-btn" onclick="toggleBGM()" id="bgmBtn">🔇</div>
     <audio id="bgm" src="./bgm.mp3" loop></audio>
 
-    <div id="slider-modal" class="slider-modal">
-        <span class="close-slider" onclick="closeSlider()">&times;</span>
+    <div id="slider-modal" class="modal" style="background:#000;">
+        <span style="position:absolute; top:20px; right:20px; color:white; font-size:35px; z-index:21000; cursor:pointer;" onclick="closeSlider()">&times;</span>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="./1.jpg"></div><div class="swiper-slide"><img src="./2.jpg"></div><div class="swiper-slide"><img src="./3.jpg"></div>
-                <div class="swiper-slide"><img src="./4.jpg"></div><div class="swiper-slide"><img src="./5.jpg"></div><div class="swiper-slide"><img src="./6.jpg"></div>
-                <div class="swiper-slide"><img src="./7.jpg"></div><div class="swiper-slide"><img src="./8.jpg"></div><div class="swiper-slide"><img src="./9.jpg"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./1.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./2.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./3.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./4.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./5.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./6.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./7.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./8.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
+                <div class="swiper-slide" style="display:flex; justify-content:center; align-items:center;"><img src="./9.jpg" style="max-width:100%; max-height:80vh; object-fit:contain;"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </div>
 
-    <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="modal-title">혼주에게 연락하기</div>
-            <div class="contact-group">
-                <div class="contact-row">
-                    <span>부 이도행 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                    <span>모 마선영 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                </div>
-            </div>
-            <div class="contact-group">
-                <div class="contact-row">
-                    <span>부 최동식 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                    <span>모 정설미 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                </div>
-            </div>
-            <div class="contact-group">
-                <div class="contact-row">
-                    <span>신랑 이건우 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                    <span>신부 최예은 <a href="tel:010-1111-1111" style="text-decoration:none;">📞</a></span>
-                </div>
-            </div>
-            <button onclick="closeModal('contact-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:20px; cursor:pointer;">닫기</button>
-        </div>
-    </div>
-
     <div id="account-modal" class="modal" onclick="closeModal('account-modal')">
         <div class="modal-content" onclick="event.stopPropagation()" style="max-height:85vh; overflow-y:auto;">
-            <div class="modal-title">마음 전하실 곳</div>
+            <div class="modal-title" style="color:var(--deep-brown); font-weight:700; text-align:center; margin-bottom:15px;">마음 전하실 곳</div>
             <div class="acc-group-title">신랑측</div>
-            <div class="account-row"><span>부 이도행 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><span>모 마선영 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><span>신랑 이건우 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">부 이도행 국민 123402-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">모 마선영 국민 123402-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">신랑 이건우 국민 123402-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
             <div class="acc-group-title">신부측</div>
-            <div class="account-row"><span>부 최동식 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><span>모 정설미 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
-            <div class="account-row"><span>신부 최예은 국민 1234-02-43-123456</span><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">부 최동식 국민 123402-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">모 정설미 국민 123402-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">신부 최예은 국민 123402-43-123456</div><button class="btn-copy" onclick="copyText('12340243123456')">복사</button></div>
             <button onclick="closeModal('account-modal')" style="margin-top:20px; border:none; background:none; color:#bbb; cursor:pointer; width:100%;">닫기</button>
         </div>
     </div>
@@ -185,11 +161,6 @@
                 <button class="btn-action" style="margin-top:40px;" onclick="openModal('contact-modal')">혼주에게 연락하기</button>
             </div>
 
-            <div class="section d-day-section" data-aos="fade-up">
-                <div class="d-day-title">D-DAY</div>
-                <div id="countdown" class="d-day-count"></div>
-            </div>
-
             <div class="section" data-aos="fade-up">
                 <div class="calendar-section">
                     <div class="calendar-month">10</div>
@@ -207,7 +178,7 @@
             </div>
 
             <div class="section" data-aos="fade-up">
-                <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-pink); letter-spacing:3px; margin-bottom:30px;">GALLERY</h3>
+                <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-brown); letter-spacing:3px; margin-bottom:30px;">GALLERY</h3>
                 <div class="gallery">
                     <div onclick="openSlider(0)"><img src="./1.jpg"></div><div onclick="openSlider(1)"><img src="./2.jpg"></div><div onclick="openSlider(2)"><img src="./3.jpg"></div>
                     <div onclick="openSlider(3)"><img src="./4.jpg"></div><div onclick="openSlider(4)"><img src="./5.jpg"></div><div onclick="openSlider(5)"><img src="./6.jpg"></div>
@@ -215,30 +186,18 @@
                 </div>
             </div>
 
-            <div class="section" data-aos="fade-up" style="background:var(--soft-pink); border-radius: 50px 50px 0 0;">
-                <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-pink); letter-spacing:3px; margin-bottom:30px;">LOCATION</h3>
+            <div class="section" data-aos="fade-up" style="background:rgba(254, 250, 224, 0.5); border-radius: 50px 50px 0 0;">
+                <h3 style="font-family:'Nanum Myeongjo'; font-size:1.1rem; color:var(--deep-brown); letter-spacing:3px; margin-bottom:30px;">LOCATION</h3>
                 <p style="font-weight:700;">한국기독교연합회관 3층</p>
                 <p style="font-size:0.9rem; color:#888; margin-bottom:25px;">서울특별시 종로구 김상옥로 30</p>
-                <p style="font-size:0.95rem; color:var(--deep-pink); font-weight:700; margin-bottom:20px;">🍴 연회장은 지하 1층에 마련되어 있습니다.</p>
                 <div class="map-img-container"><img src="./map.jpg" alt="약도"></div>
                 <div style="display:flex; gap:15px; justify-content:center; margin-bottom:40px;">
                     <a href="https://naver.me/FzSifb7D" target="_blank" class="btn-action" style="width:auto; padding:12px 25px; border-radius:30px; margin:0;">네이버 지도</a>
                     <a href="https://place.map.kakao.com/9742385" target="_blank" class="btn-action" style="width:auto; padding:12px 25px; border-radius:30px; margin:0;">카카오맵</a>
                 </div>
-                <div class="transport-info">
-                    <div class="transport-title">🚇 지하철 안내</div>
-                    <div class="transport-detail"><b>1호선 종로5가역</b> 하차 후 <b>2번 출구</b>에서 도보 5분 거리</div>
-                    <div class="transport-title">🚌 버스 안내</div>
-                    <div class="transport-detail">
-                        <b>종로5가.효제초등학교 [01-025]</b><br>간선: 100, 102, 104, 106, 107, 108, 140, 150, 160, 273 / 지선: 7025<br><br>
-                        <b>종로5가.광장시장 [01-020]</b><br>간선: 101, 103, 201, 260, 262, 270, 271A, 271B, 370, 720, 721, N15, N26, N62 / 지선: 7212 / 좌석: 9301
-                    </div>
-                    <div class="transport-title">🚗 주차 및 연락처</div>
-                    <div class="transport-detail">회관 내 <b>주차 무료</b> 이용 가능<br>문의: 02-708-4040, 4888</div>
-                </div>
-                <button class="btn-action" style="background:var(--deep-pink); color:#fff; border:none; margin-top:40px;" onclick="openModal('account-modal')">마음 전하실 곳</button>
+                <button class="btn-action" style="background:var(--deep-brown); color:#fff; border:none;" onclick="openModal('account-modal')">마음 전하실 곳</button>
             </div>
-            <p style="text-align:center; padding:40px 0; color:#dbb2b9; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
+            <p style="text-align:center; padding:40px 0; color:#a3a380; font-size:0.85rem; font-weight:700;">Copyright 2026. Geonwoo & Yeeun</p>
         </div>
     </div>
 
@@ -247,14 +206,6 @@
     <script>
         AOS.init();
         const swiper = new Swiper(".mySwiper", { pagination: { el: ".swiper-pagination", clickable: true }, loop: true });
-        function updateCountdown() {
-            const weddingDate = new Date("2026-10-03T12:30:00").getTime();
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById("countdown").innerText = days > 0 ? `우리가 함께할 날까지 ${days}일` : "오늘이 바로 그날입니다! ❤️";
-        }
-        updateCountdown();
         const bgm = document.getElementById('bgm');
         const bgmBtn = document.getElementById('bgmBtn');
         function toggleBGM() { if (bgm.paused) { bgm.play(); bgmBtn.innerText = "🎵"; } else { bgm.pause(); bgmBtn.innerText = "🔇"; } }
