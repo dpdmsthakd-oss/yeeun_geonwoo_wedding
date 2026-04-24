@@ -172,15 +172,28 @@
         </div>
     </div>
 
-    <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="modal-title" style="color:var(--deep-brown); font-weight:700; text-align:center; margin-bottom:20px;">혼주에게 연락하기</div>
-            <div class="contact-row"><span>부 이도행 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span><span>모 마선영 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span></div>
-            <div class="contact-row"><span>부 최동식 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span><span>모 정설미 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span></div>
-            <div class="contact-row"><span>신랑 이건우 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span><span>신부 최예은 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span></div>
-            <button onclick="closeModal('contact-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:20px; cursor:pointer;">닫기</button>
+   <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
+    <div class="modal-content" onclick="event.stopPropagation()" style="text-align: center; padding: 35px 20px;">
+        <div style="color:var(--deep-brown); font-weight:700; font-size:1.1rem; margin-bottom:25px; font-family:'Nanum Myeongjo';">혼주에게 연락하기</div>
+        
+        <div style="display: flex; justify-content: center; gap: 25px; padding: 15px 0; border-bottom: 1px solid #f2f2f2;">
+            <span style="white-space: nowrap;">부 이도행 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span>
+            <span style="white-space: nowrap;">모 마선영 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span>
         </div>
+        
+        <div style="display: flex; justify-content: center; gap: 25px; padding: 15px 0; border-bottom: 1px solid #f2f2f2;">
+            <span style="white-space: nowrap;">부 최동식 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span>
+            <span style="white-space: nowrap;">모 정설미 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span>
+        </div>
+        
+        <div style="display: flex; justify-content: center; gap: 25px; padding: 15px 0;">
+            <span style="white-space: nowrap;">신랑 이건우 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span>
+            <span style="white-space: nowrap;">신부 최예은 <a href="tel:010-0000-0000" style="text-decoration:none;">📞</a></span>
+        </div>
+
+        <button onclick="closeModal('contact-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:25px; cursor:pointer; font-size:0.9rem;">닫기</button>
     </div>
+</div>
 
     <div id="account-modal" class="modal" onclick="closeModal('account-modal')">
         <div class="modal-content" onclick="event.stopPropagation()" style="max-height:80vh; overflow-y:auto;">
