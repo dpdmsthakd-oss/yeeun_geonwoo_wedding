@@ -191,7 +191,12 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+    duration: 400, // 애니메이션 재생 시간을 1초에서 0.4초로 단축 (광속!)
+    once: true,    // 한 번만 실행되게 해서 버벅임 방지
+    offset: 50     // 화면에 조금만 보여도 바로 나타나게 설정
+});
+
         const mainSwiper = new Swiper(".mainGallerySwiper", { loop: true, pagination: { el: ".swiper-pagination", clickable: true }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, autoplay: { delay: 4000, disableOnInteraction: false } });
         const fullSwiper = new Swiper(".fullGallerySwiper", { loop: true, pagination: { el: ".swiper-pagination", clickable: true }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" } });
         function updateCountdown() {
