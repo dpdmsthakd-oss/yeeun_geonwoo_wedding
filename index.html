@@ -179,11 +179,11 @@
     <!-- 연락처 팝업 -->
     <div id="contact-modal" class="modal" onclick="closeModal('contact-modal')">
         <div class="modal-content" onclick="event.stopPropagation()" style="background:white; border-radius:25px;">
-             <div style="color:var(--deep-brown); font-weight:700; font-size:1.1rem; margin-bottom:25px; font-family:'Nanum Myeongjo';">혼주에게 연락하기</div>
-            <div class="contact-row-fix"><span>부 이도행 <a href="tel:010-4864-5025">📞</a></span><span style="margin-left:20px;">모 마선영 <a href="tel:010-5298-2659">📞</a></span></div>
-            <div class="contact-row-fix"><span>부 최동식 <a href="tel:010-3158-7383">📞</a></span><span style="margin-left:20px;">모 정설미 <a href="tel:010-6331-7383">📞</a></span></div>
-            <div class="contact-row-fix" style="border:none;"><span>신랑 이건우 <a href="tel:010-9440-2663">📞</a></span><span style="margin-left:20px;">신부 최예은 <a href="tel:010-6531-7383">📞</a></span></div>
-            <button onclick="closeModal('contact-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:25px; cursor:pointer; font-size:0.9rem;">닫기</button>
+            <div style="color:var(--deep-brown); font-weight:700; font-size:1.1rem; margin-bottom:25px; font-family:'Nanum Myeongjo';">혼주에게 연락하기</div>
+            <div class="contact-row-fix"><span>부 이도행 <a href="tel:010-4864-5025">📞</a></span><span>모 마선영 <a href="tel:010-5298-2659">📞</a></span></div>
+            <div class="contact-row-fix"><span>부 최동식 <a href="tel:010-3158-7383">📞</a></span><span>모 정설미 <a href="tel:010-6331-7383">📞</a></span></div>
+            <div class="contact-row-fix" style="border:none;"><span>신랑 이건우 <a href="tel:010-9440-2663">📞</a></span><span>신부 최예은 <a href="tel:010-6531-7383">📞</a></span></div>
+            <button onclick="closeModal('contact-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:25px; cursor:pointer;">닫기</button>
         </div>
     </div>
 
@@ -191,13 +191,14 @@
     <div id="account-modal" class="modal" onclick="closeModal('account-modal')">
         <div class="modal-content" onclick="event.stopPropagation()" style="background:white; border-radius:25px; max-height:80vh; overflow-y:auto; padding:30px 20px;">
             <div style="color:var(--deep-brown); font-weight:700; margin-bottom:15px;">마음 전하실 곳</div>
-             <div class="account-row"><div class="acc-info-text">부 이도행 농협 766-02-145492</div><button class="btn-copy" onclick="copyText('766-02-145492')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">모 마선영 농협 303039-51-155753</div><button class="btn-copy" onclick="copyText('303039-51-155753')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">신랑 이건우 농협 352-0404-9893-93</div><button class="btn-copy" onclick="copyText('352-0404-9893-93')">복사</button></div>
+            <div style="font-size:0.9rem; color:var(--deep-brown); font-weight:700; margin:15px 0 5px; border-left:3px solid var(--main-gold); padding-left:10px; text-align:left;">신랑측</div>
+            <div class="account-row"><div class="acc-info-text">부 이도행 농협 766-02-145492</div><button class="btn-copy" onclick="copyText('76602145492')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">모 마선영 농협 303039-51-155753</div><button class="btn-copy" onclick="copyText('30303951155753')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">신랑 이건우 농협 352-0404-9893-93</div><button class="btn-copy" onclick="copyText('3520404989393')">복사</button></div>
             <div style="font-size:0.9rem; color:var(--deep-brown); font-weight:700; margin:15px 0 5px; border-left:3px solid var(--main-gold); padding-left:10px; text-align:left;">신부측</div>
-            <div class="account-row"><div class="acc-info-text">부 최동식 농협 112-02-065436</div><button class="btn-copy" onclick="copyText('112-02-065436')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">모 정설미 농협 352121-08-78813</div><button class="btn-copy" onclick="copyText('352121-08-78813')">복사</button></div>
-            <div class="account-row"><div class="acc-info-text">신부 최예은 국민 238502-04-214376</div><button class="btn-copy" onclick="copyText('238502-04-214376')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">부 최동식 농협 112-02-065436</div><button class="btn-copy" onclick="copyText('11202065436')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">모 정설미 농협 352121-08-78813</div><button class="btn-copy" onclick="copyText('3521210878813')">복사</button></div>
+            <div class="account-row"><div class="acc-info-text">신부 최예은 국민 238502-04-214376</div><button class="btn-copy" onclick="copyText('23850204214376')">복사</button></div>
             <button onclick="closeModal('account-modal')" style="margin-top:20px; border:none; background:none; color:#bbb; cursor:pointer; width:100%;">닫기</button>
         </div>
     </div>
