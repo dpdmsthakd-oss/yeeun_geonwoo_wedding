@@ -172,51 +172,6 @@
             <button onclick="closeModal('contact-modal')" style="width:100%; border:none; background:none; color:#bbb; margin-top:25px; cursor:pointer; font-size:0.9rem;">닫기</button>
         </div>
     </div>
-
-<!-- 상단 부분은 동일하되, Swiper 설정을 업그레이드했습니다! -->
-<!-- ... 기존 head 및 style 생략 ... -->
-
-    <!-- 확대 슬라이더 모달 (줌 기능 추가!) -->
-    <div id="slider-modal" class="modal">
-        <span style="position:absolute; top:20px; right:20px; color:white; font-size:40px; cursor:pointer; z-index:21000;" onclick="closeSlider()">&times;</span>
-        <div class="swiper fullGallerySwiper" style="width:100%; height:80vh;">
-            <div class="swiper-wrapper">
-                <!-- ✅ 줌 기능을 위해 swiper-zoom-container를 감쌌습니다! -->
-                <div class="swiper-slide"><div class="swiper-zoom-container"><img src="./1.jpg"></div></div>
-                <div class="swiper-slide"><div class="swiper-zoom-container"><img src="./2.jpg"></div></div>
-                <!-- ... 30장까지 동일한 구조로 반복 ... -->
-                <div class="swiper-slide"><div class="swiper-zoom-container"><img src="./30.jpg"></div></div>
-            </div>
-            <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-
-    <!-- ... 중략 (본문 부분은 이전과 동일하게 로딩 최적화 유지) ... -->
-
-    <script>
-        // ✅ AOS 광속 로딩 설정 (0.4초)
-        AOS.init({ duration: 400, once: true, offset: 50 });
-
-        // ✅ 메인 갤러리 (Lazy 로딩 적용)
-        const mainSwiper = new Swiper(".mainGallerySwiper", { 
-            loop: true, 
-            lazy: true, // 하객이 볼 때만 사진 로딩!
-            pagination: { el: ".swiper-pagination", clickable: true }, 
-            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, 
-            autoplay: { delay: 4000, disableOnInteraction: false } 
-        });
-
-        // ✅ 확대 갤러리 (줌 기능 + 화살표)
-        const fullSwiper = new Swiper(".fullGallerySwiper", { 
-            loop: true, 
-            zoom: true, // 👈 여기서 손가락 확대 기능을 켰습니다 공주님!
-            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-            pagination: { el: ".swiper-pagination", type: "fraction" } // 몇 번째 사진인지 숫자로 표시
-        });
-
-        // ... 나머지 함수들 동일 ...
-    </script>
     
     <div id="account-modal" class="modal" onclick="closeModal('account-modal')">
         <div class="modal-content" onclick="event.stopPropagation()" style="max-height:80vh; overflow-y:auto;">
